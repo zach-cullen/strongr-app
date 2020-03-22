@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'pages#home'
   resources :users, only: [:new, :create, :show]
 
-
-  #pretty urls
   get '/signup', to: 'users#new', as: :signup
+  get '/login', to: 'sessions#new', as: :login
+  post '/sessions', to: 'sessions#create'
 end
