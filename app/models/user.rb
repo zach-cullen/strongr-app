@@ -6,4 +6,12 @@ class User < ApplicationRecord
 
   belongs_to :team
 
+  def has_team?
+    !!team_id
+  end
+
+  def is_coach?
+    is_coach 
+  end
+
 end
