@@ -14,4 +14,9 @@ class User < ApplicationRecord
     is_coach 
   end
 
+  def make_coach
+    self.is_coach = true
+    self.save
+  end
+
 end
