@@ -1,4 +1,6 @@
 class TeamsController < ApplicationController
+  before_action :block_user_if_has_team, only: [:new, :create]
+
   def index
     @teams = Team.all
   end
@@ -13,12 +15,20 @@ class TeamsController < ApplicationController
   
   def create
     @team = Team.new(team_params)
+    @team.users << current_user
     if @team.save
-      redirect_to teams_path 
+      current_user.make_coach
+      redirect_to user_path(current_user)
     else
       render :new
     end 
   end 
+
+  def block_user_if_has_team
+    if current_user.has_team?
+      redirect_to user_path(current_user)
+    end 
+  end
 
   private
 
