@@ -10,6 +10,13 @@
   </head>
 
   <body>
+    <nav>
+      <%= link_to "Home", :root %>
+      <%= link_to "Log In", :login %>
+      <%= link_to "Sign Up", :signup %>
+      <%= link_to "Log Out", :logout, method: :delete %>
+    </nav>
+
     <%= yield %>
   </body>
 </html>
