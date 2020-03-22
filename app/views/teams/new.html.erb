@@ -2,6 +2,7 @@
 
 <%= form_for @team do |f| %>
   <%= f.label :name, "Team Name:" %><br>
-  <%= f.text_field :name %><br><br>
+  <%= f.text_field :name %><br>
+  <%= @team.errors.full_messages.first if @team.errors.any? %><br>
   <%= f.submit %>
 <% end %>
