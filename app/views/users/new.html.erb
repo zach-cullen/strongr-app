@@ -8,6 +8,9 @@
   <%= f.label :password,"Password:" %><br>
   <%= f.password_field :password %><br>
   <%= f.label :password_confirmation, "Confirm Password:" %><br>
-  <%= f.password_field :password_confirmation %><br><br>
+  <%= f.password_field :password_confirmation %><br>
+  <%= @user.errors.full_messages.first if @user.errors.any? %><br>
   <%= f.submit "Sign Up" %>
+
+
 <% end %>
