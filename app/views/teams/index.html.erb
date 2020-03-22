@@ -1,7 +1,10 @@
 <h1>Teams Index</h1>
 
+<%= link_to "Create a New Team", new_team_path %><br><br>
+
+<h3>All Teams: </h3>
 <% @teams.each do |team| %>
 
-<%= link_to "#{team.name}", team_path(team) %>
+<%= link_to "#{team.name}", team_path(team) %><br>
 
 <% end %>
