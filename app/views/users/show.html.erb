@@ -1,2 +1,7 @@
 <h1><%= @user.name %></h1>
 <h3><%= @user.email %></h3>
+
+<br>
+<%= form_tag(logout_path, method: :delete) do %>
+  <%= submit_tag("Log Out") %>
+<% end %>
