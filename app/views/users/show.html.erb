@@ -1,6 +1,14 @@
-<h1><%= @user.name %></h1>
+<h1>Welcome <%= "Coach " if @user.is_coach? %><%= @user.name.capitalize %>!</h1>
 <h3><%= @user.email %></h3>
-
+<% if @user.has_team? %>
+  <h3>Team: <%= link_to "#{@user.team.name}", team_path(@user.team) %></h3>
+<% else %>
+  <p>You are not on a team yet. You can:
+    <ul>
+      <li><%= link_to "Create a New Team", new_team_path %></li>
+      <li>Accept invite from Team</li>
+    </ul>
+<% end %>
 <br>
 <%= form_tag(logout_path, method: :delete) do %>
   <%= submit_tag("Log Out") %>
