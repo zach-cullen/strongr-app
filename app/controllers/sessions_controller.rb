@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  skip_before_action :verify_user, only: [:new, :create, :destroy]
 
   def new 
   end
@@ -16,6 +17,9 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    session[:user_id] = nil
+    flash[:alert] = "You have been logged out."
+    redirect_to :login
   end
 
 end
