@@ -6,7 +6,7 @@ class TeamsController < ApplicationController
   end
 
   def show
-    @team = Team.find_by(id: params[:id])
+    @team = valid_team_membership
   end
 
   def new
@@ -28,6 +28,15 @@ class TeamsController < ApplicationController
     if current_user.has_team?
       redirect_to user_path(current_user)
     end 
+  end
+
+  def valid_team_membership
+    @team = current_user.team
+    if @team.id == params[:id].to_i
+      @team
+    else 
+      redirect_to user_path(current_user)
+    end
   end
 
   private
