@@ -1,13 +1,22 @@
 class UsersController < ApplicationController
-  validates :email, presence: true
-  validates :email, uniqueness: true
-  
   def new
     @user = User.new
+
   end
 
   def create
-    @user = User.new(email: params[:user][:email])
+    @user = User.new(user_params)
+    byebug
+  end
 
+  private
+
+  def user_params
+    params.require(:user).permit(
+      :name,
+      :email,
+      :password,
+      :password_confirmation
+    )
   end
 end
