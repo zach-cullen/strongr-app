@@ -2,7 +2,12 @@
 
 <% if current_user.team == @invite.team %>
   <p> You have invited <%= @invite.user.name %> to join <%= @invite.team.name %></p>
-  <%= link_to "Delete Invitation", team_invite_path(@invite), method: :delete %>
+  <%= form_with url: team_invite_path(@invite), method: 'delete' do |f| %>
+    <%= f.radio_button(:expire, true) %>
+    <%= f.label(:expire, "Expire this Invitation", value: true) %><br><br>
+    <%= f.submit "Delete" %>
+  <% end %>
+
 <% elsif current_user == @invite.user %>
   <p> Congrats! You have been invited to join <%= @invite.team.name %></p>
   <%= form_with url: team_invite_path(@invite), method: 'delete' do |f| %>
