@@ -33,6 +33,9 @@ class TeamInvitesController < ApplicationController
   end
 
   def destroy
+    #accepts parameters :accepted t/f for user to accept or decline invitation
+    #user is added to team if accept
+    #accepts parameters :expired true if deleted by coach
     @invite = TeamInvite.find_by(id: params[:id])
     if params[:accepted] == "true"
       @invite.team.users << current_user
@@ -41,17 +44,13 @@ class TeamInvitesController < ApplicationController
     elsif params[:accepted] == "false"
       @invite.destroy
       redirect_to user_path(current_user)
+    elsif params[:expire] == "true"
+      @invite.destroy
+      redirect_to team_path(current_user.team)
     else
       redirect_to :root
     end 
 
-    # if current_user == @invite.user
-    # else
-
-    #athlete and coach can both destroy
-    #athlete accepts they mutate self then destroy
-    #athlete declines they destroy without mutating self
-    #coach can expire invitation to destroy
   end
 
   def valid_creator
