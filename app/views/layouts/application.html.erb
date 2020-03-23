@@ -14,7 +14,8 @@
       <%= link_to "Home", :root %>
 
       <% if !!current_user %>
-        <%= link_to "#{current_user.name}'s Profile", user_path(current_user) %>
+        <%= link_to "Team", team_path(current_user.team) if current_user.has_team? %>
+        <%= link_to "Account", user_path(current_user) %>
         <%= link_to "Log Out", :logout, method: :delete %>
       <% else %>
         <%= link_to "Log In", :login %>
