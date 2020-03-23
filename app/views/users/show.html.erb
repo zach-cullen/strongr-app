@@ -3,11 +3,17 @@
 <% if @user.has_team? %>
   <h3>Team: <%= link_to "#{@user.team.name}", team_path(@user.team) %></h3>
 <% else %>
-  <p>You are not on a team yet. You can:
-    <ul>
-      <li><%= link_to "Create a New Team", new_team_path %></li>
-      <li>Accept invite from Team</li>
-    </ul>
+  <p>You are not on a team yet. You can create a new team, or join a team once you have been invited. <%= link_to "Create a New Team", new_team_path %></p>
+
+  <h3>Invitations:</h3>
+  <% if @user.team_invites.any? %>
+    <% @user.team_invites.each do |invite| %>
+      <%= link_to "View invite from #{invite.team.name}", team_invite_path(invite) %><br> 
+    <% end %>
+  <% else %>
+    <p>You have not been invited to join a team yet.</p>
+  <% end %>
+
 <% end %>
 <br>
 <%= form_tag(logout_path, method: :delete) do %>
