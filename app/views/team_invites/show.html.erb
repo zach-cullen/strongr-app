@@ -1,4 +1,15 @@
-<h1>Show Team Invite</h1>
+<h1>Invite</h1>
 
-<h3>From Team: <%= @invite.team.name %></h3>
-<h3>To User: <%= @invite.user.name %></h3>
+<% if current_user.team == @invite.team %>
+  <p> You have invited <%= @invite.user.name %> to join <%= @invite.team.name %></p>
+  <%= link_to "Delete Invitation", team_invite_path(@invite), method: :delete %>
+<% elsif current_user == @invite.user %>
+  <p> Congrats! You have been invited to join <%= @invite.team.name %></p>
+  <%= form_with url: team_invite_path(@invite), method: 'delete' do |f| %>
+    <%= f.radio_button(:accepted?, true) %>
+    <%= f.label(:accepted?, "Accept", value: true) %><br>
+    <%= f.radio_button(:accepted?, false) %>
+    <%= f.label(:accepted?, "Decline", value: false) %><br><br>
+    <%= f.submit "Submit" %>
+  <% end %>
+<% end %>
