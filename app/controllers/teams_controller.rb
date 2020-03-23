@@ -9,8 +9,12 @@ class TeamsController < ApplicationController
   def show
     @team = valid_team_membership
     #abstract to scope method
-    @coach = @team.users.where(is_coach: true).first
-    @athletes = @team.users.where(is_coach: false)
+    if @team
+      @coach = @team.users.where(is_coach: true).first
+      @athletes = @team.users.where(is_coach: false)
+    else
+      redirect_to user_path(current_user)
+    end
   end
 
   def new
@@ -39,7 +43,7 @@ class TeamsController < ApplicationController
     if @team.id == params[:id].to_i
       @team
     else 
-      redirect_to user_path(current_user)
+      false
     end
   end
 
