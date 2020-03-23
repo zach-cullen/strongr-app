@@ -3,8 +3,19 @@
 <h3>Coach: <%= @coach.name %></h3>
 <h3>Athletes:</h3>
 <ul>
-<% @athletes.each do |a| %>
-  <li><%= a.name %></li>
-<% end %>
+  <% @athletes.each do |a| %>
+    <li><%= a.name %></li>
+  <% end %>
 </ul>
+
+<% if current_user.is_coach? %>
+  <%= link_to "Invite Athlete to Join", new_team_invite_path %>
+
+  <h3>Pending Invites:</h3>
+  <ul>
+    <% @team.team_invites.each do |invite| %>
+      <li><%= link_to invite.user.name, team_invite_path(invite) %></li>
+    <% end %>
+  </ul>
+<% end %>
 
