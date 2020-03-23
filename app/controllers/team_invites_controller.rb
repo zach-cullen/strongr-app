@@ -1,4 +1,5 @@
 class TeamInvitesController < ApplicationController
+  before_action :verify_user_access, only: [:show]
 
   def new
     #builds invite automatically associated with team
@@ -41,6 +42,21 @@ class TeamInvitesController < ApplicationController
     @user = User.find_by(email: team_invite_params[:user_attributes][:email])
     if !!@user
       @user
+    else
+      false
+    end
+  end
+
+  def verify_user_access
+    redirect_to user_path(current_user) unless permitted
+  end
+
+  def permitted
+    @invite = TeamInvite.find_by(id: params[:id])
+    if @invite.user == current_user 
+      true
+    elsif @invite.team == current_user.team
+      current_user.is_coach?
     else
       false
     end
