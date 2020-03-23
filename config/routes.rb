@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'pages#home'
   resources :users, only: [:show, :new, :create]
   resources :teams, only: [:index, :show, :new, :create]
+  resources :team_invites, only: [:show, :new, :create, :destroy]
 
   get '/signup', to: 'users#new', as: :signup
   get '/login', to: 'sessions#new', as: :login
