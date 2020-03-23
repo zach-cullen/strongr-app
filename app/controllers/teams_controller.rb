@@ -1,12 +1,16 @@
 class TeamsController < ApplicationController
   before_action :block_user_if_has_team, only: [:new, :create]
 
+  #remove index after development phase
   def index
     @teams = Team.all
   end
 
   def show
     @team = valid_team_membership
+    #abstract to scope method
+    @coach = @team.users.where(is_coach: true).first
+    @athletes = @team.users.where(is_coach: false)
   end
 
   def new
