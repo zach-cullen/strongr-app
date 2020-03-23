@@ -9,12 +9,16 @@ class TeamInvitesController < ApplicationController
   end
 
   def show
-    #view for coaches and athletes. Athlete only can accept
-    #link to destroy
+    #view for coaches and athletes
+    #athlete accept and decline both destroy invite
+    
   end
 
   def destroy
     #athlete and coach can both destroy
+    #athlete accepts they mutate self then destroy
+    #athlete declines they destroy without mutating self
+    #coach can expire invitation to destroy
   end
 
 end
