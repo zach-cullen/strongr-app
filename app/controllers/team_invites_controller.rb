@@ -1,5 +1,5 @@
 class TeamInvitesController < ApplicationController
-  before_action :verify_user_access, only: [:show]
+  before_action :verify_user_access, only: [:show, :destroy]
 
   def new
     #builds invite automatically associated with team
@@ -10,10 +10,11 @@ class TeamInvitesController < ApplicationController
   def create
     #post action only for coaches
     @team = current_user.team
-    if valid_user
-      if !valid_user.has_team?
-        @invite = valid_user.team_invites.build
+    if valid_creator
+      if !valid_creator.has_team?
+        @invite = valid_creator.team_invites.build
         @team.team_invites << @invite
+        redirect_to team_path(@team)
       else
         redirect_to new_team_invite_path
         flash[:alert] = "The user at this address already has a team."
@@ -32,19 +33,30 @@ class TeamInvitesController < ApplicationController
   end
 
   def destroy
+    @invite = TeamInvite.find_by(id: params[:id])
+    if params[:accepted] == "true"
+      @invite.team.users << current_user
+      @invite.destroy
+      redirect_to user_path(current_user)
+    elsif params[:accepted] == "false"
+      @invite.destroy
+      redirect_to user_path(current_user)
+    else
+      redirect_to :root
+    end 
+
+    # if current_user == @invite.user
+    # else
+
     #athlete and coach can both destroy
     #athlete accepts they mutate self then destroy
     #athlete declines they destroy without mutating self
     #coach can expire invitation to destroy
   end
 
-  def valid_user
+  def valid_creator
     @user = User.find_by(email: team_invite_params[:user_attributes][:email])
-    if !!@user
-      @user
-    else
-      false
-    end
+    !!@user ? @user : false
   end
 
   def verify_user_access
