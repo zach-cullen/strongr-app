@@ -1,3 +1,10 @@
-<h1>Team: <%= @team.name %></h1>
+<h1><%= @team.name %></h1>
 
-<%= link_to "All Teams", teams_path %>
+<h3>Coach: <%= @coach.name %></h3>
+<h3>Athletes:</h3>
+<ul>
+<% @athletes.each do |a| %>
+  <li><%= a.name %></li>
+<% end %>
+</ul>
+
