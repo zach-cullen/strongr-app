@@ -3,7 +3,8 @@ class User < ApplicationRecord
   validates :email, presence: true
   validates :email, uniqueness: true
   validates :name, presence: true
-
+  
+  has_many :team_invites
   belongs_to :team
 
   def has_team?
