@@ -9,6 +9,7 @@ class TeamInvitesController < ApplicationController
   end
 
   def show
+    @invite = TeamInvite.find_by(id: params[:id])
     #view for coaches and athletes
     #athlete accept and decline both destroy invite
     
