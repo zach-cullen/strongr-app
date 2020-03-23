@@ -5,7 +5,7 @@ class User < ApplicationRecord
   validates :name, presence: true
   
   has_many :team_invites
-  belongs_to :team
+  belongs_to :team, optional: true 
 
   def has_team?
     !!team_id
