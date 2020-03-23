@@ -1,1 +1,16 @@
-<h1>Create Team Invite<h1>
+<h1>Invite Athlete to Join <%= @team.name %></h1>
+
+<%= form_for @invite do |f| %>
+  <%= f.fields_for :user_attributes do |user_fields| %>
+    <%= user_fields.label :email, "Enter the email of a user to invite"%>
+    <%= user_fields.text_field :email %>
+  <% end %>
+  <%= f.submit "Invite User" %>
+<% end %>
+
+<% flash.each do |type, msg| %>
+  <br>
+  <div>
+    <%= msg %>
+  </div>
+<% end %>
