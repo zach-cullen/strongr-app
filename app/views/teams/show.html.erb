@@ -10,12 +10,13 @@
 
 <% if current_user.is_coach? %>
   <%= link_to "Invite Athlete to Join", new_team_invite_path %>
-
-  <h3>Pending Invites:</h3>
-  <ul>
-    <% @team.team_invites.each do |invite| %>
-      <li><%= link_to invite.user.name, team_invite_path(invite) %></li>
-    <% end %>
-  </ul>
+  <% if @team.team_invites.any? %>
+    <h3>Pending Invites:</h3>
+    <ul>
+      <% @team.team_invites.each do |invite| %>
+        <li><%= link_to invite.user.name, team_invite_path(invite) %></li>
+      <% end %>
+    </ul>
+  <% end %>
 <% end %>
 
