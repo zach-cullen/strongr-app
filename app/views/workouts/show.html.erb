@@ -1,1 +1,5 @@
-<h1>Workout</h1>
+<h1>Workout <%= @workout.id %></h1>
+
+<h3>Team: <%= @workout.team.name %></h3>
+<h3>Date: <%= @workout.date_pretty %></h3>
+<h3>Published: <%= @workout.published %></h3>
