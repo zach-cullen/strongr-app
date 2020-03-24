@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_24_150150) do
+ActiveRecord::Schema.define(version: 2020_03_24_201809) do
 
   create_table "exercises", force: :cascade do |t|
     t.string "category"
@@ -45,6 +45,13 @@ ActiveRecord::Schema.define(version: 2020_03_24_150150) do
     t.string "password_digest"
     t.integer "team_id"
     t.boolean "is_coach", default: false, null: false
+  end
+
+  create_table "workout_exercises", force: :cascade do |t|
+    t.integer "workout_id"
+    t.integer "exercise_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "workouts", force: :cascade do |t|
