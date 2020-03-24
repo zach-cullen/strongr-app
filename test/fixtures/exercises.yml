@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type: 
+  title: MyString
+  amount_unit: MyString
+  amount: 1
+  score_unit: MyString
+  rank_by_max: false
+  description: MyText
+
+two:
+  type: 
+  title: MyString
+  amount_unit: MyString
+  amount: 1
+  score_unit: MyString
+  rank_by_max: false
+  description: MyText
