@@ -11,7 +11,9 @@ class WorkoutsController < ApplicationController
 
   def create
     @team = current_user.team
+    #give workout team_id prior to saving since not included in params
     @workout = @team.workouts.build
+    #save workout with strong params, see workout model exercise_attributes
     @workout.update(workout_params)
   end 
 
