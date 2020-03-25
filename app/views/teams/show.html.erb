@@ -2,7 +2,13 @@
 
 <h3>Workouts:</h3>
 
-<%= link_to "Schedule a New Workout", new_workout_path %>
+<%= link_to "Schedule a New Workout", new_workout_path %><br><br>
+
+<% @workouts.each do |workout| %>
+  <ul>
+    <li><%= link_to "#{workout.date_pretty}", workout_path(workout) %></li>
+  </ul>
+<% end %>
 
 <h3>Coach: <%= @coach.name %></h3>
 <h3>Athletes:</h3>
