@@ -10,7 +10,9 @@ class WorkoutsController < ApplicationController
   end
 
   def create
-    byebug
+    @team = current_user.team
+    @workout = @team.workouts.build
+    @workout.update(workout_params)
   end 
 
   def destroy
