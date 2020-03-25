@@ -16,6 +16,7 @@ class WorkoutsController < ApplicationController
     @workout = @team.workouts.build
     #save workout with strong params, see workout model exercise_attributes
     @workout.update(workout_params)
+    redirect_to workout_path(@workout)
   end 
 
   def destroy
