@@ -9,7 +9,7 @@
     <%= exercise_fields.label :title, "Category: " %>
     <%= exercise_fields.select :category, options_for_select(Exercise.categories) %><br>
 
-    <%= exercise_fields.label :title, "Name: " %>
+    <%= exercise_fields.label :title, "Movement: " %>
     <%= exercise_fields.text_field :title, list: 'exercises-list' %>
       <datalist id="exercises-list">
         <% @team.exercises_list.each do |e| %>
