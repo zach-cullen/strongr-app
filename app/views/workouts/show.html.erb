@@ -1,5 +1,11 @@
-<h1>Workout <%= @workout.id %></h1>
+<h3><%= @workout.team.name %></h3>
+<h1>Workout of the Day <%= @workout.date_pretty %></h1>
 
-<h3>Team: <%= @workout.team.name %></h3>
-<h3>Date: <%= @workout.date_pretty %></h3>
-<h3>Published: <%= @workout.published %></h3>
+
+<% @workout.exercises.each do |exercise| %>
+  <div>
+    <h5><%= exercise.category %></h5>
+    <h3><%= exercise.title%><%= " x #{exercise.amount} #{exercise.amount_unit}" if exercise.amount %></h3>
+    <p><%= exercise.description %></p>
+  </div>
+<% end %>
