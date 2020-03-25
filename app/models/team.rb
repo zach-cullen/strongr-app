@@ -7,6 +7,6 @@ class Team < ApplicationRecord
   has_many :exercises, through: :workout_exercises
 
   def exercises_list
-    self.exercises.distinct("title")
+    self.exercises.order(:title).select(:title).distinct
   end
 end
