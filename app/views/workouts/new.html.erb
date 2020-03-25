@@ -4,7 +4,7 @@
 
   <%= f.label :date, "Workout Date: " %>
   <%= f.date_select :date, order: [:month, :day, :year] %><br><br> 
-  <%= f.fields_for :exercise do |exercise_fields| %>
+  <%= f.fields_for :exercise_attributes do |exercise_fields| %>
     <p>Exercise 1</p>
     <%= exercise_fields.label :title, "Category: " %>
     <%= exercise_fields.select :category, options_for_select(Exercise.categories) %><br>
