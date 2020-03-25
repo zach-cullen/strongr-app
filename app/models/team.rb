@@ -5,4 +5,8 @@ class Team < ApplicationRecord
   has_many :workouts
   has_many :workout_exercises, through: :workouts
   has_many :exercises, through: :workout_exercises
+
+  def exercises_list
+    self.exercises.distinct("title")
+  end
 end
