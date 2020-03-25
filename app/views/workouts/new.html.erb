@@ -17,12 +17,14 @@
         <% end %>
       </datalist><br>
     <%= exercise_fields.label :amount, "Quantity: " %>
-    <%= exercise_fields.text_field :amount %>
-    <%= exercise_fields.select :amount_unit, options_for_select(Exercise.units) %><br>
+    <%= exercise_fields.text_field :amount, placeholder: "Leave Blank if Metcon"  %>
+    <%= exercise_fields.select :amount_unit, options_for_select(Exercise.units), include_blank: true %><br>
     <%= exercise_fields.label :score_unit, "Score By: " %>
     <%= exercise_fields.select :score_unit, options_for_select(Exercise.units) %><br>
     <%= exercise_fields.label :rank_by_max, "Rank By: " %>
-    <%= exercise_fields.select :rank_by_max, options_for_select([["max", "true"], ["min", "false"]]) %><br>
+    <%= exercise_fields.select :rank_by_max, options_for_select([["max", true], ["min", false]]) %><br>
+    <%= exercise_fields.label :description, "Instructions: "%><br>
+    <%= exercise_fields.text_area :description %>
   <% end %>
   <br>
   <%= f.submit  %>
