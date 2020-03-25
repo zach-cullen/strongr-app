@@ -11,7 +11,7 @@ class Exercise < ApplicationRecord
   def self.units
     # provides list of unit options for both amount_unit and score_unit
     # validation not yet implemented only form
-    units = ["reps", "lbs", "min:sec", "meters", "calories"]
+    units = ["reps", "lbs", "min", "sec" "meters", "calories"]
   end
 
   def rank_by_text
