@@ -2,6 +2,7 @@ class WorkoutsController < ApplicationController
 
   def show
     @workout = Workout.find_by(id: params[:id])
+    @exercises = @workout.exercises
   end 
 
   def new 
