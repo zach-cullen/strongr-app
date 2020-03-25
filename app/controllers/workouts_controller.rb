@@ -4,8 +4,9 @@ class WorkoutsController < ApplicationController
     @workout = Workout.find_by(id: params[:id])
   end 
 
-  def new
+  def new 
     @workout = Workout.new
+    @team = current_user.team
   end
 
   def create
