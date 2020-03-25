@@ -6,6 +6,10 @@ class Exercise < ApplicationRecord
     categories = ["Strength", "Metcon"]
   end
 
+  def self.units
+    units = ["reps", "lbs", "min:sec", "meters", "calories"]
+  end
+
   def rank_by_text
     self.rank_by_max ? "max" : "min"
   end
