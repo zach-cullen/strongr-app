@@ -6,8 +6,10 @@ class WorkoutsController < ApplicationController
   end 
 
   def new 
-    @workout = Workout.new
     @team = current_user.team
+    @workout = Workout.new
+    2.times { @workout.exercises.build }
+
   end
 
   def create
@@ -27,7 +29,7 @@ class WorkoutsController < ApplicationController
   def workout_params
     params.require(:workout).permit(
       "date(1i)", "date(2i)", "date(3i)", 
-      :exercise_attributes => [
+      :exercises_attributes => [
         :category,
         :title,
         :amount,
@@ -42,18 +44,29 @@ class WorkoutsController < ApplicationController
   # WORKOUT FORM PARAMS STRUCTURE 
   # "params" => {
   #   "workout"=>{
-    #   "date(1i)"=>"2020", 
-    #   "date(2i)"=>"3",
-    #   "date(3i)"=>"25",  
-    #   "exercise_attributes"=>{
-    #     "category"=>"Strength", 
-    #     "title"=>"Deadlift", 
-    #     "amount"=>"10", 
-    #     "amount_unit"=>"reps", 
-    #     "score_unit"=>"lbs", 
-    #     "rank_by_max"=>"true",
-    #     "description"=>"Build to heavy set rest 2 min"
-    #   }
+  #     "date(1i)"=>"2020", 
+  #     "date(2i)"=>"3",
+  #     "date(3i)"=>"25",  
+  #     "exercise_attributes"=>{
+  #       "0"=>{
+  #         "category"=>"Strength", 
+  #         "title"=>"Deadlift", 
+  #         "amount"=>"10", 
+  #         "amount_unit"=>"reps", 
+  #         "score_unit"=>"lbs", 
+  #         "rank_by_max"=>"true",
+  #         "description"=>"Build to heavy set rest 2 min"
+  #       }, 
+  #       "1"=>{
+  #         "category"=>"Metcon", 
+  #         "title"=>"Fran", 
+  #         "amount"=>"", 
+  #         "amount_unit"=>"", 
+  #         "score_unit"=>"time", 
+  #         "rank_by_max"=>"false",
+  #         "description"=>"21-15-9 reps for time\nThrusters (95/65)\nPullups"
+  #       }
+  #     }
   #   } 
   # }
 
