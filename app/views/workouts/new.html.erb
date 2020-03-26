@@ -1,14 +1,11 @@
 <h1>New Workout</h1>
 
 <%= form_for @workout do |f| %>
-
   <%= f.label :date, "Workout Date: " %>
   <%= f.date_select :date, order: [:month, :day, :year] %><br><br> 
-  <%= f.fields_for :exercise_attributes do |exercise_fields| %>
-    <p>Exercise 1</p>
+  <%= f.fields_for :exercises do |exercise_fields| %>
     <%= exercise_fields.label :title, "Category: " %>
     <%= exercise_fields.select :category, options_for_select(Exercise.categories) %><br>
-
     <%= exercise_fields.label :title, "Movement: " %>
     <%= exercise_fields.text_field :title, list: 'exercises-list' %>
       <datalist id="exercises-list">
@@ -24,7 +21,7 @@
     <%= exercise_fields.label :rank_by_max, "Rank By: " %>
     <%= exercise_fields.select :rank_by_max, options_for_select([["max", true], ["min", false]]) %><br>
     <%= exercise_fields.label :description, "Instructions: "%><br>
-    <%= exercise_fields.text_area :description %>
+    <%= exercise_fields.text_area :description %><br>
   <% end %>
   <br>
   <%= f.submit  %>
