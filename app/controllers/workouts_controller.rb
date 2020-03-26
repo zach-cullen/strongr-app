@@ -21,6 +21,12 @@ class WorkoutsController < ApplicationController
     redirect_to workout_path(@workout)
   end 
 
+  def edit
+  end
+
+  def update
+  end
+
   def destroy
   end
 

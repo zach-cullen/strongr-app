@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :new, :create]
   resources :teams, only: [:index, :show, :new, :create]
   resources :team_invites, only: [:show, :new, :create, :destroy]
-  resources :workouts, only: [:show, :new, :create, :destroy]
+  resources :workouts, only: [:show, :new, :create, :edit, :update, :destroy]
   resources :exercises, only: [:show, :new, :create, :destroy]
 
   get '/signup', to: 'users#new', as: :signup
