@@ -22,6 +22,8 @@ class WorkoutsController < ApplicationController
   end 
 
   def edit
+    @team = current_user.team
+    @workout = Workout.find_by(id: params[:id])
   end
 
   def update
