@@ -1,28 +1,3 @@
 <h1>New Workout</h1>
 
-<%= form_for @workout do |f| %>
-  <%= f.label :date, "Workout Date: " %>
-  <%= f.date_select :date, order: [:month, :day, :year] %><br><br> 
-  <%= f.fields_for :exercises do |exercise_fields| %>
-    <%= exercise_fields.label :title, "Category: " %>
-    <%= exercise_fields.select :category, options_for_select(Exercise.categories) %><br>
-    <%= exercise_fields.label :title, "Movement: " %>
-    <%= exercise_fields.text_field :title, list: 'exercises-list' %>
-      <datalist id="exercises-list">
-        <% @team.exercises_list.each do |e| %>
-          <option value="<%= e.title %>"></option>
-        <% end %>
-      </datalist><br>
-    <%= exercise_fields.label :amount, "Quantity: " %>
-    <%= exercise_fields.text_field :amount, placeholder: "Leave Blank if Metcon"  %>
-    <%= exercise_fields.select :amount_unit, options_for_select(Exercise.units), include_blank: true %><br>
-    <%= exercise_fields.label :score_unit, "Score By: " %>
-    <%= exercise_fields.select :score_unit, options_for_select(Exercise.units) %><br>
-    <%= exercise_fields.label :rank_by_max, "Rank By: " %>
-    <%= exercise_fields.select :rank_by_max, options_for_select([["max", true], ["min", false]]) %><br>
-    <%= exercise_fields.label :description, "Instructions: "%><br>
-    <%= exercise_fields.text_area :description %><br>
-  <% end %>
-  <br>
-  <%= f.submit  %>
-<% end %>
+<%= render 'form' %>
