@@ -8,7 +8,10 @@
 
 <% @workouts.each do |workout| %>
   <ul>
-    <li><%= link_to "#{workout.date_pretty}", workout_path(workout) %></li>
+    <li>
+      <%= link_to "#{workout.date_pretty}", workout_path(workout) %>
+      <%= link_to "Edit", edit_workout_path(workout) if current_user.is_coach? %>
+    </li>
   </ul>
 <% end %>
 
