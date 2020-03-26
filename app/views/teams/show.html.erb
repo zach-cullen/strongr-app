@@ -2,7 +2,9 @@
 
 <h3>Workouts:</h3>
 
-<%= link_to "Schedule a New Workout", new_workout_path %><br><br>
+<% if current_user.is_coach? %>
+  <%= link_to "Schedule a New Workout", new_workout_path %><br><br>
+<% end %>
 
 <% @workouts.each do |workout| %>
   <ul>
