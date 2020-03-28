@@ -24,9 +24,12 @@ class WorkoutsController < ApplicationController
   def edit
     @team = current_user.team
     @workout = Workout.find_by(id: params[:id])
+    @workout_exercises = WorkoutExercise.where(workout_id: @workout.id)
+    byebug
   end
 
   def update
+
   end
 
   def destroy
