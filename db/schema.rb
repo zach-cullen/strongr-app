@@ -12,18 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2020_03_24_201809) do
 
-  create_table "exercises", force: :cascade do |t|
-    t.string "category"
-    t.string "title"
-    t.string "amount_unit"
-    t.integer "amount"
-    t.string "score_unit"
-    t.boolean "rank_by_max", default: true
-    t.text "description"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "team_invites", force: :cascade do |t|
     t.integer "team_id"
     t.integer "user_id"
