@@ -11,5 +11,5 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new', as: :login
   post '/sessions', to: 'sessions#create'
   delete '/sessions', to: 'sessions#destroy', as: :logout
-  delete '/workout_exercises', to: 'workout_exercises#destroy', as: :disconnect_exercise
+  delete '/workout_exercises/:id', to: 'workout_exercises#destroy', as: :disconnect_exercise
 end
