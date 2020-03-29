@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_29_234701) do
+ActiveRecord::Schema.define(version: 2020_03_29_235623) do
 
   create_table "metcons", force: :cascade do |t|
     t.string "title"
@@ -41,6 +41,13 @@ ActiveRecord::Schema.define(version: 2020_03_29_234701) do
     t.string "password_digest"
     t.integer "team_id"
     t.boolean "is_coach", default: false, null: false
+  end
+
+  create_table "workout_metcons", force: :cascade do |t|
+    t.integer "workout_id"
+    t.integer "metcon_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "workouts", force: :cascade do |t|

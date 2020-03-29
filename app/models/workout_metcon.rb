@@ -1,0 +1,2 @@
+class WorkoutMetcon < ApplicationRecord
+end
