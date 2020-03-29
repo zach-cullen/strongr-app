@@ -8,6 +8,7 @@ class ExercisesController < ApplicationController
   end
 
   def create
+
   end
 
   def destroy
