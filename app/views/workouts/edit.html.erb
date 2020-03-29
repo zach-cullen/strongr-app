@@ -3,7 +3,36 @@
 <% @workout.exercises.each do |exercise| %>
   <div>
     <h3><%= exercise.title%><%= " x #{exercise.amount} #{exercise.amount_unit}" if exercise.amount %> <%= "(#{exercise.category})" %></h3>
-    <p style="white-space: pre-line"><%= exercise.description %></p><br>
-    <%= link_to "Remove this Exercise", disconnect_exercise_path(@workout_exercises.find {|e| e.exercise_id == exercise.id}), method: "delete" %>
+    <p style="white-space: pre-line"><%= exercise.description %></p>
+    <%= link_to "Remove this Exercise", workout_exercise_path(@workout_exercises.find {|we| we.exercise_id == exercise.id}), method: "delete" %>
+    <br><br>
   </div>
+<% end %> 
+
+<h3>Add New Exercise to Workout</h3>
+<%= form_for @exercise do |f| %>
+  <%= f.hidden_field :workout_id, value: @workout.id %>
+  <%= f.label :title, "Category: " %>
+  <%= f.select :category, options_for_select(Exercise.categories) %><br>
+  <%= f.label :title, "Movement: " %>
+  <%= f.text_field :title, list: 'exercises-list' %>
+    <datalist id="exercises-list">
+      <% @team.exercises_list.each do |e| %>
+        <option value="<%= e.title %>"></option>
+      <% end %>
+    </datalist><br>
+  <%= f.label :amount, "Quantity: " %>
+  <%= f.text_field :amount, placeholder: "Leave Blank if Metcon"  %>
+  <%= f.select :amount_unit, options_for_select(Exercise.units), include_blank: true %><br>
+  <%= f.label :score_unit, "Score By: " %>
+  <%= f.select :score_unit, options_for_select(Exercise.units) %><br>
+  <%= f.label :rank_by_max, "Rank By: " %>
+  <%= f.select :rank_by_max, options_for_select([["max", true], ["min", false]]) %><br>
+  <%= f.label :description, "Instructions: "%><br>
+  <%= f.text_area :description %><br><br>
+  <%= f.submit %>
 <% end %>
+
+
+
+
