@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_24_141017) do
+ActiveRecord::Schema.define(version: 2020_03_29_234701) do
+
+  create_table "metcons", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "score_by"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "team_invites", force: :cascade do |t|
     t.integer "team_id"

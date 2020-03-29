@@ -1,0 +1,2 @@
+class Metcon < ApplicationRecord
+end
