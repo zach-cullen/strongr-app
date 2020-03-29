@@ -4,5 +4,6 @@
   <div>
     <h3><%= exercise.title%><%= " x #{exercise.amount} #{exercise.amount_unit}" if exercise.amount %> <%= "(#{exercise.category})" %></h3>
     <p style="white-space: pre-line"><%= exercise.description %></p><br>
+    <%= link_to "Remove this Exercise", disconnect_exercise_path(@workout_exercises.find {|e| e.exercise_id == exercise.id}), method: "delete" %>
   </div>
 <% end %>
