@@ -25,6 +25,7 @@ class WorkoutsController < ApplicationController
     @team = current_user.team
     @workout = Workout.find_by(id: params[:id])
     @workout_exercises = WorkoutExercise.where(workout_id: @workout.id)
+    @exercise = Exercise.new
   end
 
   def update
