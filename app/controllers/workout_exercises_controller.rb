@@ -1,7 +1,7 @@
 class WorkoutExercisesController < ApplicationController
 
   def destroy
-    #route through :disconnect_exercise. This delete targets the join so that the exercise remains intact when removed form a workout
+    #This delete targets the join so that the exercise remains intact when removed form a workout
     #validate that only a coach of team the object belongs to can delete it
     @workout_exercise = WorkoutExercise.find_by(id: params[:id])
     if @workout_exercise && valid_coach?
