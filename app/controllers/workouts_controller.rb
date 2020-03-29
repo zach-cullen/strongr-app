@@ -8,8 +8,8 @@ class WorkoutsController < ApplicationController
   def new 
     @team = current_user.team
     @workout = Workout.new
-    2.times { @workout.exercises.build }
-
+    # 2.times { @workout.exercises.build }
+    
   end
 
   def create
