@@ -1,9 +1,9 @@
 class WorkoutsController < ApplicationController
   before_action :permit_coach, only: [:new, :create, :edit, :update, :destroy]
+  before_action :valid_user_workout, only: [:show, :edit, :update, :destroy]
 
   def show
-    @workout = Workout.find_by(id: params[:id])
-    # @exercises = @workout.exercises
+    # @workout provided by before_action valid_user_workout validating user permission
   end 
 
   def new 
@@ -11,7 +11,6 @@ class WorkoutsController < ApplicationController
     @metcons_list = current_user.team.metcons_list
     @workout = Workout.new
     @workout.metcons.build
-    # 2.times { @workout.exercises.build }
   end
 
   def create
@@ -28,19 +27,16 @@ class WorkoutsController < ApplicationController
   end 
 
   def edit
+    # @workout provided by before_action valid_user_workout validating user permission
     @team = current_user.team
-    @workout = Workout.find_by(id: params[:id])
-
-    # @workout_exercises = WorkoutExercise.where(workout_id: @workout.id)
-    # @exercise = Exercise.new
   end
 
   def update
-
+    # @workout provided by before_action valid_user_workout validating user permission
   end
 
   def destroy
-    
+    # @workout provided by before_action valid_user_workout validating user permission
   end
 
   def permit_coach
@@ -49,8 +45,18 @@ class WorkoutsController < ApplicationController
     end
   end
 
-  def valid_coach
+  def workout_user_permitted?
+    #requires workout instance variable to be set prior to calling
+    @workout.team == current_user.team ? true : false
+  end
 
+  def valid_user_workout
+    @workout = Workout.find_by(id: params[:id])
+    if workout_user_permitted?
+      @workout = workout
+    else
+      redirect_to user_path(current_user)
+    end
   end
 
   private
