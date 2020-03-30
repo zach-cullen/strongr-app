@@ -18,9 +18,8 @@ class WorkoutsController < ApplicationController
     #give workout team_id prior to saving since not included in params
     @workout = @team.workouts.build
     #see workout #metcons_attributes 
-    @workout.update(workout_params)
-    byebug
-    if @workout.save 
+    if @workout.valid?
+      @workout.update(workout_params)
       redirect_to workout_path(@workout)
     else
       redirect_to new_workout_path
