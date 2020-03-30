@@ -1,6 +1,7 @@
 class Workout < ApplicationRecord
   belongs_to :team
-  
+  has_many :workout_metcons
+  has_many :metcons, through: :workout_metcons
 
 
   # has_many :workout_exercises
