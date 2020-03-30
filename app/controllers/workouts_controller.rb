@@ -37,6 +37,8 @@ class WorkoutsController < ApplicationController
 
   def destroy
     # @workout provided by before_action valid_user_workout validating user permission
+    @workout.destroy
+    redirect_to team_path(current_user.team)
   end
 
   def permit_coach
