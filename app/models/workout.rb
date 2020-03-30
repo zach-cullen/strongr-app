@@ -1,6 +1,6 @@
 class Workout < ApplicationRecord
   belongs_to :team
-  has_many :workout_metcons
+  has_many :workout_metcons, :dependent => :delete_all
   has_many :metcons, through: :workout_metcons
   accepts_nested_attributes_for :metcons
 
