@@ -1,0 +1,9 @@
+<h1>Edit <%= @metcon.title %></h1>
+
+<%= form_for @metcon do |f| %>
+  <%= f.label :description, "Edit Description:" %><br>
+  <%= f.text_area :description %><br>
+  <%= f.label :score_by, "Score:" %>
+  <%= f.select :score_by, options_for_select(Metcon.score_types) %><br><br>
+  <%= f.submit %>
+<% end %>
