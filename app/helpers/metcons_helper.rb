@@ -1,0 +1,2 @@
+module MetconsHelper
+end

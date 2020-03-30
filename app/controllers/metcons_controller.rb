@@ -1,0 +1,2 @@
+class MetconsController < ApplicationController
+end
