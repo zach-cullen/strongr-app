@@ -15,10 +15,13 @@ class WorkoutsController < ApplicationController
   def create
     @team = current_user.team
     #give workout team_id prior to saving since not included in params
-    @workout = @team.workouts.build
-    #save workout with strong params, see workout model exercise_attributes
-    @workout.update(workout_params)
-    redirect_to workout_path(@workout)
+    @workout = @team.workouts.build(workout_params)
+
+    if @workout.save 
+      redirect_to workout_path(@workout)
+    else
+      redirect_to new_workout_path
+    end 
   end 
 
   def edit
@@ -39,18 +42,19 @@ class WorkoutsController < ApplicationController
   private
 
   def workout_params
-    params.require(:workout).permit(
-      "date(1i)", "date(2i)", "date(3i)", 
-      :exercises_attributes => [
-        :category,
-        :title,
-        :amount,
-        :amount_unit,
-        :score_unit,
-        :rank_by_max,
-        :description
-      ]
-    ) 
+    params.require(:workout).permit("date(1i)", "date(2i)", "date(3i)")
+    # params.require(:workout).permit(
+    #   "date(1i)", "date(2i)", "date(3i)", 
+    #   :exercises_attributes => [
+    #     :category,
+    #     :title,
+    #     :amount,
+    #     :amount_unit,
+    #     :score_unit,
+    #     :rank_by_max,
+    #     :description
+    #   ]
+    # ) 
   end
 
   # WORKOUT FORM PARAMS STRUCTURE 
