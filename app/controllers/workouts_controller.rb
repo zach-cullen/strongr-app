@@ -8,6 +8,7 @@ class WorkoutsController < ApplicationController
   def new 
     @team = current_user.team
     @workout = Workout.new
+    @workout.metcons.build
     # 2.times { @workout.exercises.build }
     
   end
@@ -15,8 +16,10 @@ class WorkoutsController < ApplicationController
   def create
     @team = current_user.team
     #give workout team_id prior to saving since not included in params
-    @workout = @team.workouts.build(workout_params)
-
+    @workout = @team.workouts.build
+    #see workout #metcons_attributes 
+    @workout.update(workout_params)
+    byebug
     if @workout.save 
       redirect_to workout_path(@workout)
     else
@@ -42,7 +45,13 @@ class WorkoutsController < ApplicationController
   private
 
   def workout_params
-    params.require(:workout).permit("date(1i)", "date(2i)", "date(3i)")
+    params.require(:workout).permit(
+      "date(1i)", "date(2i)", "date(3i)",
+      :metcons_attributes => [
+        :title,
+        :description
+      ]
+    )
     # params.require(:workout).permit(
     #   "date(1i)", "date(2i)", "date(3i)", 
     #   :exercises_attributes => [
