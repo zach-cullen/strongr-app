@@ -1,9 +1,12 @@
 <h3><%= @workout.team.name %></h3>
 <h2>Workout of the Day <%= @workout.date_pretty %></h2>
 
-<% @workout.exercises.each do |exercise| %>
-  <div>
-    <h3><%= exercise.title%><%= " x #{exercise.amount} #{exercise.amount_unit}" if exercise.amount %> <%= "(#{exercise.category})" %></h3>
-    <p style="white-space: pre-line"><%= exercise.description %></p>
-  </div>
+<% if @workout.metcons.any? %>
+  <% @workout.metcons.each do |metcon| %>
+    <div>
+      <h5>Metcon:</h5>
+      <h3><%= metcon.title %></h3>
+      <p style="white-space: pre-line;"><%= metcon.description %></p>
+    </div>
+  <% end %>
 <% end %>
