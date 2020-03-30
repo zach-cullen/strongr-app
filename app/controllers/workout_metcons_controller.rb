@@ -13,10 +13,4 @@ class WorkoutMetconsController < ApplicationController
       redirect_to user_path(current_user)
     end
   end
-
-  def permit_coach
-    if !current_user.is_coach?
-      redirect_to user_path(current_user)
-    end
-  end
 end
