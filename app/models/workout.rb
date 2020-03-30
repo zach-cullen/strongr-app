@@ -2,8 +2,11 @@ class Workout < ApplicationRecord
   belongs_to :team
   has_many :workout_metcons
   has_many :metcons, through: :workout_metcons
+  accepts_nested_attributes_for :metcons
 
-
+  def metcons_attributes=(attributes)
+    byebug
+  end
   # has_many :workout_exercises
   # has_many :exercises, through: :workout_exercises
   # accepts_nested_attributes_for :exercises
