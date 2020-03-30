@@ -4,10 +4,11 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :new, :create]
   resources :teams, only: [:index, :show, :new, :create]
   resources :team_invites, only: [:show, :new, :create, :destroy]
-  resources :workouts, only: [:show, :new, :create, :edit, :update, :destroy]
+  resources :workouts, only: [:show, :new, :create, :edit, :update]
 
   get '/signup', to: 'users#new', as: :signup
   get '/login', to: 'sessions#new', as: :login
   post '/sessions', to: 'sessions#create'
   delete '/sessions', to: 'sessions#destroy', as: :logout
+  delete '/workout/:id', to: 'workouts#destroy', as: :delete_workout
 end
