@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   post '/sessions', to: 'sessions#create'
   delete '/sessions', to: 'sessions#destroy', as: :logout
   delete '/workout/:id', to: 'workouts#destroy', as: :delete_workout
+  delete '/workout_metcons/:id', to: 'workout_metcons#destroy', as: :delete_workout_metcon
 end
