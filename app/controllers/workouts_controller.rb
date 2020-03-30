@@ -53,7 +53,7 @@ class WorkoutsController < ApplicationController
   def valid_user_workout
     @workout = Workout.find_by(id: params[:id])
     if workout_user_permitted?
-      @workout = workout
+      @workout
     else
       redirect_to user_path(current_user)
     end
