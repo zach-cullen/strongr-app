@@ -16,4 +16,9 @@ class MetconsController < ApplicationController
     end
   end
 
+  private
+
+  def metcon_params
+    params.require(:metcon).permit(:description, :score_by)
+  end
 end
