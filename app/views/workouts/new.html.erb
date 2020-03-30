@@ -2,7 +2,14 @@
 
 <%= form_for @workout do |f| %>
   <%= f.label :date, "Workout Date: " %>
-  <%= f.date_select :date, order: [:month, :day, :year] %><br><br> 
-
+  <%= f.date_select :date, order: [:month, :day, :year] %><br>
+    <p>Add Metcon:</p>
+    <%= f.fields_for :metcons do |metcon_fields| %> 
+      <%= metcon_fields.label :title, "Title:" %><br>
+      <%= metcon_fields.text_field :title %><br><br>
+      <%= metcon_fields.label :description, "Description:" %><br>
+      <%= metcon_fields.text_area :description %><br>
+    <% end %>
+    <br><br>
   <%= f.submit  %>
 <% end %>
