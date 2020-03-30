@@ -1,6 +1,11 @@
 class MetconsController < ApplicationController
   before_action :permit_coach
 
+  def create
+    
+  end
+
+
   def edit
     @metcon = Metcon.find_by(id: params[:id])
     if !valid_editor
