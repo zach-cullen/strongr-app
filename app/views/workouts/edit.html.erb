@@ -1,7 +1,7 @@
 <h2>Edit Workout <%= @workout.date_pretty %></h2>
 
-<% if @workout.metcons.any? %>
-  <% @workout.metcons.each do |metcon| %>
+<% if @metcons.any? %>
+  <% @metcons.each do |metcon| %>
     <div>
       <h5>Metcon: 
         <%= link_to "Remove", delete_workout_metcon_path(WorkoutMetcon.find_by(workout_id: @workout.id, metcon_id: metcon.id)), method: "delete" %>
@@ -14,7 +14,15 @@
   <% end %>
 <% end %>
 
+<br>
+<h3>Add Metcon:</h3>
 
+<%= form_for @new_metcon do |f| %>
+  <%= f.fields_for :workout do |workout_fields| %>
+    <%= f.label :id, "#{@workout.id}"%>
+  <% end %>
+  <%= f.submit %>
+<% end %>
 
 
 
