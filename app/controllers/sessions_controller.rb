@@ -18,6 +18,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
+    session[:recently_edited_workout_id] = nil
     flash[:alert] = "You have been logged out."
     redirect_to :login
   end
