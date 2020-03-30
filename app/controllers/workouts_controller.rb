@@ -7,6 +7,7 @@ class WorkoutsController < ApplicationController
 
   def new 
     @team = current_user.team
+    @metcons_list = current_user.team.metcons_list
     @workout = Workout.new
     @workout.metcons.build
     # 2.times { @workout.exercises.build }
