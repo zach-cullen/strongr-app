@@ -6,14 +6,24 @@ class MetconsController < ApplicationController
     if !valid_editor
       redirect_to user_path(current_user)
     end
-    byebug
   end
 
   def update
     @metcon = Metcon.find_by(id: params[:id])
+
+    if !!session[:recently_edited_workout_id]
+      @workout_for_redirect = Workout.find_by(id: session[:recently_edited_workout_id])
+    end 
+
     if valid_editor
       @metcon.update(metcon_params)
-      redirect_to team_path(current_user.team)
+      if @workout_for_redirect
+        #expire the session info since the workout is cached for this action
+        session[:recently_edited_workout_id] = nil
+        redirect_to workout_path(@workout_for_redirect)
+      else 
+        redirect_to team_path(current_user.team)
+      end
     else
       redirect_to user_path(current_user)
     end
