@@ -1,4 +1,5 @@
 class WorkoutsController < ApplicationController
+  before_action :permit_coach, only: [:new, :create]
 
   def show
     @workout = Workout.find_by(id: params[:id])
@@ -11,7 +12,6 @@ class WorkoutsController < ApplicationController
     @workout = Workout.new
     @workout.metcons.build
     # 2.times { @workout.exercises.build }
-    
   end
 
   def create
@@ -40,6 +40,12 @@ class WorkoutsController < ApplicationController
 
   def destroy
     
+  end
+
+  def permit_coach
+    if !current_user.is_coach?
+      redirect_to user_path(current_user)
+    end
   end
 
   private
