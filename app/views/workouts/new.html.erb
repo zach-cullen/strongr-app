@@ -8,8 +8,10 @@
       <%= metcon_fields.label :title, "Title:" %><br>
       <%= metcon_fields.text_field :title %><br><br>
       <%= metcon_fields.label :description, "Description:" %><br>
-      <%= metcon_fields.text_area :description %><br>
+      <%= metcon_fields.text_area :description %><br><br>
+      <%= metcon_fields.label :score_by, "Score:" %>
+      <%= metcon_fields.select :score_by, options_for_select(Metcon.score_types) %><br>
     <% end %>
-    <br><br>
+    <br>
   <%= f.submit  %>
 <% end %>
