@@ -48,7 +48,8 @@ class WorkoutsController < ApplicationController
       "date(1i)", "date(2i)", "date(3i)",
       :metcons_attributes => [
         :title,
-        :description
+        :description,
+        :score_by
       ]
     )
     # params.require(:workout).permit(
