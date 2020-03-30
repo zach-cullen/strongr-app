@@ -1,5 +1,5 @@
 class WorkoutsController < ApplicationController
-  before_action :permit_coach, only: [:new, :create]
+  before_action :permit_coach, only: [:new, :create, :edit, :update, :destroy]
 
   def show
     @workout = Workout.find_by(id: params[:id])
@@ -30,6 +30,7 @@ class WorkoutsController < ApplicationController
   def edit
     @team = current_user.team
     @workout = Workout.find_by(id: params[:id])
+
     # @workout_exercises = WorkoutExercise.where(workout_id: @workout.id)
     # @exercise = Exercise.new
   end
@@ -46,6 +47,10 @@ class WorkoutsController < ApplicationController
     if !current_user.is_coach?
       redirect_to user_path(current_user)
     end
+  end
+
+  def valid_coach
+
   end
 
   private
