@@ -29,6 +29,9 @@ class WorkoutsController < ApplicationController
   def edit
     # @workout provided by before_action valid_user_workout validating user permission
     @team = current_user.team
+
+    #save workout_id in session for helpful redirect if nested metcon is changed
+    session[:recently_edited_workout_id] = params[:id]
   end
 
   def update
