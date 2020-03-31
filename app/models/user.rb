@@ -4,8 +4,10 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   validates :name, presence: true
   
-  has_many :team_invites
   belongs_to :team, optional: true 
+  has_many :team_invites
+  has_many :workout_metcon_scores
+
 
   def has_team?
     !!team_id
