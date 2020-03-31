@@ -35,15 +35,10 @@
       <% end %>
 
     <% else %>
-
       <h3><%= wm.metcon.title %></h3>
-      <% if wm.metcon.score_by == "reps" %>
-        <p>My Score: <%= wm.workout_metcon_scores.first.score %> reps</p>
-      <% elsif wm.metcon.score_by == "time" %>
-        <p>My Score: <%= wm.workout_metcon_scores.first.score_time_format %></p>
-      <% end %>
+      <p>My Score: <%= wm.workout_metcon_scores.first.score_formatted %></p>
     <% end %>
-    
+
   <% end %>
 
 
