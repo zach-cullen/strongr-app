@@ -15,13 +15,25 @@
 <br><br>
 <% if @workout_metcons.any? %>
   <% @workout_metcons.each do |wm| %>
-    <h3>Record Score for <%= wm.metcon.title %>:</h3>
-    <%= form_for wm do |f| %>
-        <%= f.fields_for :workout_metcon_scores do |score_fields| %>
-        <%= score_fields.label :score %>
-        <%= score_fields.text_field :score %>
+
+    <% if wm.workout_metcon_scores.first.score.blank? %>
+
+      <h3>Record Score for <%= wm.metcon.title %>:</h3>
+      <%= form_for wm do |f| %>
+          <%= f.fields_for :workout_metcon_scores do |score_fields| %>
+          <%= score_fields.label :score %>
+          <%= score_fields.text_field :score %>
+        <% end %>
+        <%= f.submit "Save Score" %>
       <% end %>
-      <%= f.submit "Save Score" %>
+
+    <% else %>
+
+      <h3><%= wm.metcon.title %></h3>
+      <p>My Score: <%= wm.workout_metcon_scores.first.score %> <%= wm.metcon.score_by %></p>
+
     <% end %>
   <% end %>
+
+
 <% end %>
