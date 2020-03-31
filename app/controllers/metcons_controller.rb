@@ -2,7 +2,18 @@ class MetconsController < ApplicationController
   before_action :permit_coach
 
   def create
-    
+    #if metcon created from edit workout page, passes workout_id to build association
+    if metcon_params[:workout_id]
+      @workout = Workout.find_by(id: metcon_params[:workout_id])
+      if valid_workout_user
+        @metcon = Metcon.new(metcon_params)
+        #validate then add to workout to save
+        @workout.metcons << @metcon
+        redirect_to workout_path(@workout)
+      else
+        redirect_to user_path(current_user)
+      end
+    end 
   end
 
 
@@ -34,6 +45,10 @@ class MetconsController < ApplicationController
     end
   end
 
+  def valid_workout_user
+    @workout.team == current_user.team ? true : false
+  end
+
   private
 
   def valid_editor
@@ -41,6 +56,6 @@ class MetconsController < ApplicationController
   end
 
   def metcon_params
-    params.require(:metcon).permit(:description, :score_by)
+    params.require(:metcon).permit(:title, :description, :score_by, :workout_id)
   end
 end
