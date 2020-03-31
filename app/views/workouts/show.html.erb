@@ -20,9 +20,16 @@
 
       <h3>Record Score for <%= wm.metcon.title %>:</h3>
       <%= form_for wm do |f| %>
-          <%= f.fields_for :workout_metcon_scores do |score_fields| %>
-          <%= score_fields.label :score %>
-          <%= score_fields.text_field :score %>
+        <%= f.fields_for :workout_metcon_scores do |score_fields| %>
+          <% if wm.metcon.score_by == "reps" %>
+            <%= score_fields.label :score, "Reps: " %>
+            <%= score_fields.text_field :score %>
+          <% elsif wm.metcon.score_by == "time" %>
+            <%= score_fields.label :min, "Min: " %>
+            <%= score_fields.number_field :min, in: 00..59  %>
+            <%= score_fields.label :sec, "Sec: " %>
+            <%= score_fields.number_field :sec, in: 00..59  %>
+          <% end %>
         <% end %>
         <%= f.submit "Save Score" %>
       <% end %>
@@ -30,9 +37,13 @@
     <% else %>
 
       <h3><%= wm.metcon.title %></h3>
-      <p>My Score: <%= wm.workout_metcon_scores.first.score %> <%= wm.metcon.score_by %></p>
-
+      <% if wm.metcon.score_by == "reps" %>
+        <p>My Score: <%= wm.workout_metcon_scores.first.score %> reps</p>
+      <% elsif wm.metcon.score_by == "time" %>
+        <p>My Score: <%= wm.workout_metcon_scores.first.score_time_format %></p>
+      <% end %>
     <% end %>
+    
   <% end %>
 
 
