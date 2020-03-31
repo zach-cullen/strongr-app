@@ -29,6 +29,7 @@ class WorkoutsController < ApplicationController
   def edit
     # @workout provided by before_action valid_user_workout validating user permission
     @team = current_user.team
+    @metcons_list = current_user.team.metcons_list
     @new_metcon = @workout.metcons.build
     @metcons = @workout.metcons.select {|m| m.persisted? }
     #save workout_id in session for helpful redirect if nested metcon is changed
