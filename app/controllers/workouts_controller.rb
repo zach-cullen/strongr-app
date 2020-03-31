@@ -5,6 +5,8 @@ class WorkoutsController < ApplicationController
   def show
     # @workout provided by before_action valid_user_workout validating user permission
     @metcons = @workout.metcons
+    @workout_metcons = @workout.workout_metcons
+    @workout_metcons.each {|wm| wm.find_or_build_user_score(current_user)}
   end 
 
   def new 
