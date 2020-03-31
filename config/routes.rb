@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :team_invites, only: [:show, :new, :create, :destroy]
   resources :workouts, only: [:show, :new, :create, :edit, :update]
   resources :metcons, only: [:create, :edit, :update]
+  resources :workout_metcons, only: [:update]
 
   get '/signup', to: 'users#new', as: :signup
   get '/login', to: 'sessions#new', as: :login
