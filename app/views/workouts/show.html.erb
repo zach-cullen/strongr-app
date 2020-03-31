@@ -13,8 +13,15 @@
 <% end %>
 
 <br><br>
-<% if @metcons.any? %>
-  <% @metcons.each do |metcon| %>
-    <h3>Record Score for <%= metcon.title %>:</h3>
+<% if @workout_metcons.any? %>
+  <% @workout_metcons.each do |wm| %>
+    <h3>Record Score for <%= wm.metcon.title %>:</h3>
+    <%= form_for wm do |f| %>
+        <%= f.fields_for :workout_metcon_scores do |score_fields| %>
+        <%= score_fields.label :score %>
+        <%= score_fields.text_field :score %>
+      <% end %>
+      <%= f.submit "Save Score" %>
+    <% end %>
   <% end %>
 <% end %>
