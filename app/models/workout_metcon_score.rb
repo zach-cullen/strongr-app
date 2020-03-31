@@ -17,10 +17,26 @@ class WorkoutMetconScore < ApplicationRecord
     end
   end
 
+  def metcon
+    self.workout_metcon.metcon
+  end
+
+  def score_formatted
+    if self.metcon.score_by == "time"
+      score_time_format
+    elsif self.metcon.score_by == "reps"
+      score_rep_format
+    end
+  end
+
   def score_time_format
     min = self.score / 60
     sec = self.score % 60
     format = "#{min}:#{sec}"
+  end
+
+  def score_rep_format
+    format = "#{score} reps"
   end
 
   def min
