@@ -1,5 +1,5 @@
 class WorkoutMetconsController < ApplicationController
-  before_action :permit_coach
+  before_action :permit_coach, only: [:destroy]
 
   def update
     @workout_metcon = WorkoutMetcon.find_by(id: params[:id])
