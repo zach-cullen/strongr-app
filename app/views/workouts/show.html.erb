@@ -11,3 +11,10 @@
     </div>
   <% end %>
 <% end %>
+
+<br><br>
+<% if @metcons.any? %>
+  <% @metcons.each do |metcon| %>
+    <h3>Record Score for <%= metcon.title %>:</h3>
+  <% end %>
+<% end %>
