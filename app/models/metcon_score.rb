@@ -1,0 +1,2 @@
+class MetconScore < ApplicationRecord
+end
