@@ -4,7 +4,6 @@ class WorkoutMetconsController < ApplicationController
   def update
     @workout_metcon = WorkoutMetcon.find_by(id: params[:id])
     @score = @workout_metcon.find_or_build_user_score(current_user)
-    # @score.update(score: workout_metcon_params[:workout_metcon_scores_attributes]["0"][:score])
     @score.format_and_update_score(workout_metcon_params[:workout_metcon_scores_attributes]["0"])
     redirect_to workout_path(@workout_metcon.workout)
   end
