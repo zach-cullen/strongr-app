@@ -1,8 +1,8 @@
 <h3><%= @workout.team.name %></h3>
 <h2>Workout of the Day <%= @workout.date_pretty %></h2>
 
-<% if @workout.metcons.any? %>
-  <% @workout.metcons.each do |metcon| %>
+<% if @metcons.any? %>
+  <% @metcons.each do |metcon| %>
     <div>
       <h5>Metcon:</h5>
       <h3><%= metcon.title %></h3>

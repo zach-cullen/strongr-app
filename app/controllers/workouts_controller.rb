@@ -4,6 +4,7 @@ class WorkoutsController < ApplicationController
 
   def show
     # @workout provided by before_action valid_user_workout validating user permission
+    @metcons = @workout.metcons
   end 
 
   def new 
