@@ -1,6 +1,7 @@
 class Metcon < ApplicationRecord
   has_many :workout_metcons
   has_many :workouts, through: :workout_metcons
+  has_many :workout_metcon_scores, through: :workout_metcons
   accepts_nested_attributes_for :workouts
   validates :score_by, inclusion: { in: ["time", "reps"] }
 
