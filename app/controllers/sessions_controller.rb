@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_action :verify_user, only: [:new, :create, :destroy]
+  skip_before_action :verify_user, only: [:new, :create, :destroy, :google_login]
 
   def new 
   end
@@ -21,6 +21,22 @@ class SessionsController < ApplicationController
     session[:recently_edited_workout_id] = nil
     flash[:alert] = "You have been logged out."
     redirect_to :login
+  end
+
+
+  def google_login
+    user_info = request.env['omniauth.auth'][:info]
+    #find user by email or create new user with email
+    @user = User.find_or_create_by(email: user_info[:email]) do |u|
+      u.update(name: user_info[:name], password: SecureRandom.hex)
+    end 
+    #log user in
+    if @user.persisted?
+      session[:user_id] = @user.id
+      redirect_to user_path(@user)
+    else
+      redirect_to :root
+    end
   end
 
 end
