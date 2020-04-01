@@ -1,4 +1,4 @@
-<h1>Welcome <%= "Coach " if @user.is_coach? %><%= @user.name.capitalize %>!</h1>
+<h1>Welcome <%= "Coach " if @user.is_coach? %><%= @user.name %>!</h1>
 <h3><%= @user.email %></h3>
 <% if @user.has_team? %>
   <h3>Team: <%= link_to "#{@user.team.name}", team_path(@user.team) %></h3>
