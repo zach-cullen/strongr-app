@@ -23,3 +23,38 @@
   --light-bg: #FAFAFA;
   --dark-txt: #1a1a1a;
 }
+
+body {
+  color: var(--dark-txt);
+}
+
+
+h1 {
+  font-weight: 700;
+  font-size: 3rem;
+}
+
+h2 {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+h5 {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+p {
+  font-weight: 400;
+  font-size: 1rem;
+}
