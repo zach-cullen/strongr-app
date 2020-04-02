@@ -69,3 +69,66 @@ p {
   padding: 0 1rem;
 }
 
+nav {
+  margin: 1rem auto 1.5rem;
+  height: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr;
+  grid-template-areas: 
+  "logo . links links";
+}
+
+
+.nav-logo {
+  grid-area: logo;
+  height: 2rem;
+  width: 150px;
+}
+
+.nav-logo a {
+  text-decoration: none;
+}
+
+.logo {
+  height: 2rem;
+  width: 150px;
+  /* background-image: url("../img/strongr-blue-mint.svg");
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-position: center; */
+}
+
+.nav-links {
+  grid-area: links;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 1rem;
+  grid-template-areas: 
+  "n1 n2 n3 n4";
+}
+
+.nav-link {
+  height: 2rem;
+  min-width: 80px;
+  line-height: 2.4rem;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--dark-txt)
+}
+
+.nav-log {
+  grid-area: n4;
+}
+
+.nav-account {
+  grid-area: n3;
+}
+
+.nav-team {
+  grid-area: n2
+}
+
+
+

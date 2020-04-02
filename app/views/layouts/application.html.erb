@@ -12,16 +12,20 @@
   <body>
     <div class="container">
     <nav>
-      <%= link_to "Home", :root %>
-
-      <% if !!current_user %>
-        <%= link_to "Team", team_path(current_user.team) if current_user.has_team? %>
-        <%= link_to "Account", user_path(current_user) %>
-        <%= link_to "Log Out", :logout, method: :delete %>
-      <% else %>
-        <%= link_to "Log In", :login %>
-        <%= link_to "Sign Up", :signup %>
-      <% end %>
+      <div class="nav-logo">
+        <%= link_to :root do %>
+          <div class="logo"><h2>Strongr</h2></div>
+        <% end %>
+      </div>
+      <div class="nav-links">
+        <% if !!current_user %>
+          <%= link_to "Team", team_path(current_user.team), class: "nav-link nav-team" if current_user.has_team? %>
+          <%= link_to "Account", user_path(current_user), class: "nav-link nav-account" %>
+          <%= link_to "Log Out", :logout, method: :delete, class: "nav-link nav-log" %>
+        <% else %>
+          <%= link_to "Log In", :login, class: "nav-link nav-log" %>
+        <% end %>
+      </div>
     </nav>
 
     <%= yield %>
