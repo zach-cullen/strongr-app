@@ -86,6 +86,7 @@ nav {
 }
 
 .nav-logo a {
+  color: var(--dark-txt);
   line-height: 2.4rem;
   text-decoration: none;
 }
@@ -115,6 +116,11 @@ nav {
   color: var(--dark-txt)
 }
 
+.nav-link:hover {
+  font-weight: 600;
+  color: var(--darkblue);
+}
+
 .nav-log {
   grid-area: n4;
 }
@@ -127,7 +133,7 @@ nav {
   grid-area: n2
 }
 
-.nav-dash {
+.nav-home {
   grid-area: n1;
 }
 
