@@ -3,32 +3,50 @@
     max-width: 1050px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-column-gap: 1.5rem;
+    grid-template-columns: 3fr 2fr;
+    grid-gap: 1.5rem;
     grid-template-areas:
     "g1 g2"
-    "g3 g2"
+    "g1 ."
+    "g3 ."
   }
 
   .block {
     border-radius: 1rem;
-    margin-bottom: 1.5rem;
     background-color: var(--light-bg);
+  }
+
+  .inner-block {
+    margin: 1.5rem;
   }
   
   .training {
     grid-area: g1;
-    height: 20rem;
   }
   
   .goals {
     grid-area: g2;
-    height: 30rem;
   }
   
   .announcements {
     grid-area: g3;
-    height: 20rem;
   }
+}
 
+@media only screen and (max-width: 675px) {
+
+  .app-home {
+    .grid {
+      max-width: 1050px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-column-gap: 1.5rem;
+      grid-template-areas:
+      "g1"
+      "g2"
+      "g3"
+    }
+  }
+  
 }
