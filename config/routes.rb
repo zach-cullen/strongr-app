@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :metcons, only: [:create, :edit, :update]
   resources :workout_metcons, only: [:update]
 
+  get '/app/home', to: 'app#home', as: :app_home
   get '/auth/google_oauth2/callback', to: 'sessions#google_login'
   get '/signup', to: 'users#new', as: :signup
   get '/login', to: 'sessions#new', as: :login
