@@ -4,6 +4,7 @@ class Workout < ApplicationRecord
   has_many :metcons, through: :workout_metcons
   has_many :workout_metcon_scores, through: :workout_metcons
   accepts_nested_attributes_for :metcons
+  scope :this_week, -> { where("date >= ? AND date < ?", Date.today, Date.today + 7) }
 
   def metcons_attributes=(metcons_attributes)
     metcons_attributes.values.each do |attributes|
