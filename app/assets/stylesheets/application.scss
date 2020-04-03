@@ -44,7 +44,7 @@ h2 {
 }
 
 h3 {
-  font-weight: 500;
+  font-weight: 400;
   font-size: 1.5rem;
 }
 
@@ -82,18 +82,16 @@ nav {
 .nav-logo {
   grid-area: logo;
   height: 2rem;
-  width: 100px;
-}
-
-.nav-logo a {
-  color: var(--dark-txt);
-  line-height: 2.4rem;
-  text-decoration: none;
+  width: min-content;
 }
 
 .logo {
   height: 2rem;
-  width: 150px;
+  width: 140px;
+  background: url("./strongr-blue-mint.svg");
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .nav-links {
