@@ -25,4 +25,18 @@ class Workout < ApplicationRecord
   def date_pretty
     self.date.strftime("%B %-d, %Y")
   end
+
+  def today_or_day
+    if self.date == Date.today
+      "TODAY"
+    else
+      self.date.strftime("%A")
+    end
+  end
+
+  def categories
+    categories = []
+    categories << "Metcon" if self.metcons.any? 
+    categories.join(" + ")
+  end
 end
