@@ -75,27 +75,24 @@ nav {
   display: grid;
   grid-template-columns: 1fr 1fr 2fr;
   grid-template-areas: 
-  "logo . links links";
+  "logo . links";
 }
 
 
 .nav-logo {
   grid-area: logo;
   height: 2rem;
-  width: 150px;
+  width: 100px;
 }
 
 .nav-logo a {
+  line-height: 2.4rem;
   text-decoration: none;
 }
 
 .logo {
   height: 2rem;
   width: 150px;
-  /* background-image: url("../img/strongr-blue-mint.svg");
-  background-size: 100% auto;
-  background-repeat: no-repeat;
-  background-position: center; */
 }
 
 .nav-links {
@@ -109,7 +106,7 @@ nav {
 
 .nav-link {
   height: 2rem;
-  min-width: 80px;
+  min-width: 70px;
   line-height: 2.4rem;
   text-align: center;
   text-decoration: none;
@@ -128,6 +125,10 @@ nav {
 
 .nav-team {
   grid-area: n2
+}
+
+.nav-dash {
+  grid-area: n1;
 }
 
 
