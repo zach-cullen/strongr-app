@@ -58,9 +58,19 @@ h5 {
   font-size: 1rem;
 }
 
+h6 {
+  font-weight: 400;
+  font-size: 0.8rem;
+}
+
 p {
   font-weight: 400;
   font-size: 1rem;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
 .container {
@@ -133,6 +143,28 @@ nav {
 
 .nav-home {
   grid-area: n1;
+}
+
+.block {
+  border-radius: 1rem;
+  background-color: var(--light-bg);
+}
+
+.inner-block {
+  margin: 1rem;
+}
+
+.block-title {
+  margin: 0.5rem;
+}
+
+.icon-arrow-right {
+  height: 100%;
+  width: 100%;
+  background: url("./icon-arrow-right");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: fill;
 }
 
 
