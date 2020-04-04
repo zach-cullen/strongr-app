@@ -30,8 +30,12 @@
   width: auto;
   border-radius: 0.5rem;
   background-color: #ebebeb;
-  display: flex;
-  justify-content: space-between;
+  // display: flex;
+  // justify-content: space-between;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+
+
   animation-duration: 0.4s;
   padding: 1rem;
   margin: 0 0.25rem 1rem;
@@ -40,16 +44,38 @@
 }
 
 .card-right {
+  width: max-content;
   visibility: hidden;
 }
 
 .card-coach-buttons {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 0.5rem;
+}
+
+.card-btn {
+  text-align: center;
+  height: 1rem;
+  font-size: 0.8rem;
+  line-height: 1.2rem;
+  border-radius: 0.5rem;
+  background: rgba(129, 161, 192, 0.15);
+}
+
+.card-btn:hover {
+  background: rgba(129, 161, 192, 0.3);
+}
+
+.coach-btn-2 {
+  background-color: pink;
+  // grid-area: b-right;
 }
 
 .button-small {
-  background: rgba(129, 161, 192, 0.15);
+  background-color: yellow;
+  grid-area: b-aleft;
+  // background: rgba(129, 161, 192, 0.15);
   width: 3rem;
   height: 1rem;
   border-radius: 0.5rem;
@@ -62,17 +88,7 @@
   background: rgba(129, 161, 192, 0.3);
 }
 
-.button-small-delete {
-  background: rgba(129, 161, 192, 0.15);
-  width: 3rem;
-  height: 1rem;
-  border-radius: 0.5rem;
-  line-height: 1.2rem;
-  text-align: center;
-  margin-top: 3px;
-}
-
-.button-small-delete:hover {
+.delete-btn:hover {
   background-color: hsla(352, 100%, 60%, 0.6);
 }
 

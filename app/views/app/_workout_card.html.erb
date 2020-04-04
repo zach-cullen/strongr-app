@@ -10,12 +10,12 @@
     <br>
     <% if current_user.is_coach? %>
       <div class="card-coach-buttons">
-        <%= link_to edit_workout_path(workout) do %>
-          <h6 class="button-small">Edit</h6>
-        <% end %>
-        <%= link_to delete_workout_path(workout), method: "delete" do %>
-          <h6 class="button-small-delete">Delete</h6>
-        <% end %>
+        <div class="card-btn">
+          Edit
+        </div>
+        <div class="card-btn delete-btn">
+          Delete
+        </div>
       </div>
     <% end %>
   </div>
