@@ -8,7 +8,9 @@
           <h3>Workout Schedule</h3>
 
           <% if current_user.is_coach? %>
-            <%= link_to "Schedule a New Workout", new_workout_path %><br><br>
+            <%= link_to new_workout_path do %>
+              <div class="btn-block-lrg">+ Schedule a New Workout</div>
+            <% end %>
           <% end %>
         </div>
         <% @workouts.each do |workout| %>
@@ -20,25 +22,34 @@
     </div>
 
     <div class="block team-roster">
-      <h3>Coach: <%= @coach.name %></h3>
-      <h3>Athletes:</h3>
-      <ul>
-        <% @athletes.each do |a| %>
-          <li><%= a.name %></li>
-        <% end %>
-      </ul>
+      <div class="inner-block">
+        <div class="block-title">
+          <h3>Roster</h3>
+        </div>
 
-      <% if current_user.is_coach? %>
-        <%= link_to "Invite Athlete to Join", new_team_invite_path %>
-        <% if @team.team_invites.any? %>
-          <h3>Pending Invites:</h3>
-          <ul>
-            <% @team.team_invites.each do |invite| %>
-              <li><%= link_to invite.user.name, team_invite_path(invite) %></li>
+        <div class="people">
+          <h4>Coach:</h4>
+          <p><%= @coach.name %></p>
+          <br>
+          <h4>Athletes:</h4>
+          <% @athletes.each do |a| %>
+            <p><%= a.name %></p>
+          <% end %>
+          <br>
+          <% if current_user.is_coach? %>
+            <% if @team.team_invites.any? %>
+              <h4>Pending Invites:</h4>
+              <% @team.team_invites.each do |invite| %>
+                <p><%= link_to invite.user.name, team_invite_path(invite) %></p>
+              <% end %>
             <% end %>
-          </ul>
-        <% end %>
-      <% end %>
+            <br>
+            <%= link_to new_team_invite_path do %>
+              <div class="btn-block-lrg">+ Invite Athlete</div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
