@@ -29,7 +29,7 @@
 .workout-card {
   width: auto;
   border-radius: 0.5rem;
-  background-color: #ebebeb;
+  background-color: var(--light-gray);
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-areas: "card-left card-right" ;
