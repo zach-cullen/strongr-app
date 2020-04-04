@@ -23,7 +23,11 @@ class Workout < ApplicationRecord
   end
 
   def date_pretty
-    self.date.strftime("%B %-d, %Y")
+    self.date.strftime("%b %-d, %Y")
+  end
+
+  def date_short
+    self.date.strftime("%-m / %-d")
   end
 
   def today_or_day
