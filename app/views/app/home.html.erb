@@ -6,7 +6,7 @@
           <h3>Training</h3>
           <p>You have <%= @workouts_this_week.count %> workouts this week</p>
         </div>
-        <% @workouts_this_week.each do |workout| %>
+        <% @workouts_this_week.each do |workout| %> 
           <%= link_to workout_path(workout) do %>
             <%= render partial: "workout_card", locals: {workout: workout} %>
           <% end %>

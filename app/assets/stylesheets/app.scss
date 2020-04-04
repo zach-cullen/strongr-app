@@ -30,10 +30,13 @@
   width: auto;
   border-radius: 0.5rem;
   background-color: #ebebeb;
-
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-template-areas: "card-left card-right";
+  display: flex;
+  // flex-direction: column;
+  justify-content: space-between;
+  // display: flexbox;
+  // flex-direction: row;
+  // grid-template-columns: 1fr 1fr;
+  // grid-template-areas: "card-left card-right";
   animation-duration: 0.4s;
   padding: 1rem;
   margin: 0 0.25rem 1rem;
@@ -41,29 +44,47 @@
   animation-fill-mode: forwards;
 }
 
-.card-left {
-  grid-area: "card-left"
-}
-
 .card-right {
-  grid-area: "card-right";
-  display: inline-block;
-  height: 1rem;
-  margin: auto 1rem;
   visibility: hidden;
 }
 
-.card-right-txt {
-  display: inline-block;
-  float: right;
-  height: 1rem;
+.card-coach-buttons {
+  display: flex;
+  justify-content: space-between;
 }
 
-.card-right-icon {
+.button-small {
+  background: rgba(129, 161, 192, 0.15);
+  width: 3rem;
+  height: 1rem;
+  border-radius: 0.5rem;
+  line-height: 1.2rem;
+  text-align: center;
+  margin-top: 3px;
+}
+
+.button-small:hover {
+  background: rgba(129, 161, 192, 0.3);
+}
+
+.button-small-delete {
+  background: rgba(129, 161, 192, 0.15);
+  width: 3rem;
+  height: 1rem;
+  border-radius: 0.5rem;
+  line-height: 1.2rem;
+  text-align: center;
+  margin-top: 3px;
+}
+
+.button-small-delete:hover {
+  background-color: hsla(352, 100%, 60%, 0.6);
+}
+
+.inline {
   display: inline-block;
   float: right;
   height: 1rem;
-  width: 1rem;
 }
 
 

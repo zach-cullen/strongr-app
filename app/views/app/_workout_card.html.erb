@@ -1,14 +1,20 @@
 <div class="workout-card" %>
   <div class="card-left">
     <h5><%= workout.today_or_day %></h5>
-    <h6><%= workout.categories %></h6>
+    <p><%= workout.categories %></p>
   </div>
   <div class="card-right">
-    <div class="card-right-icon">
-      <div class="icon-arrow-right"></div>
+    <div class="inline">
+      <div class="inline icon-arrow-right"></div><h5 class="inline">Go to Workout</h5>
     </div>
-    <div class="card-right-txt">
-      <h5>Go to Workout</h5>
-    </div>
+    <br>
+    <% if current_user.is_coach? %>
+      <div class="card-coach-buttons">
+        <%= link_to edit_workout_path(workout) do %>
+          <h6 class="button-small">Edit</h6>
+        <% end %>
+        <h6 class="button-small-delete">Delete</h6>
+      </div>
+    <% end %>
   </div>
 </div>
