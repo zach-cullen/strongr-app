@@ -10,4 +10,8 @@ class Team < ApplicationRecord
     #returns an alphabetically ordered array of distinct metcon titles specific to the team
     metcons_titles = self.metcons.order(:title).select(:title).distinct.collect {|m| m.title}
   end
+
+  def workout_of_the_day
+    self.workouts.find_by(date: Date.today)
+  end
 end
