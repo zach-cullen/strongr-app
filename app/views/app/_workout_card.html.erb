@@ -9,14 +9,12 @@
     </div>
     <br>
     <% if current_user.is_coach? %>
-      <div class="card-coach-buttons">
-        <div class="card-btn">
-          Edit
-        </div>
-        <div class="card-btn delete-btn">
-          Delete
-        </div>
-      </div>
+        <%= link_to edit_workout_path(workout) do %>
+          <div class="card-btn">Edit</div>
+        <% end %>
+        <%= link_to delete_workout_path(workout) do %>
+          <div class="card-btn delete-btn">Delete</div>
+        <% end %>
     <% end %>
   </div>
 </div>
