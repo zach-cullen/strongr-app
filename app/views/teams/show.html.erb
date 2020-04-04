@@ -1,38 +1,53 @@
 <h1><%= @team.name %></h1>
 
-<h3>Workouts:</h3>
+<div class="team-show">
+  <div class="grid">
+    <div class="block team-workouts">
+      <div class="inner-block">
+      <h3>Workouts</h3>
+        <% if current_user.is_coach? %>
+          <%= link_to "Schedule a New Workout", new_workout_path %><br><br>
+        <% end %>
 
-<% if current_user.is_coach? %>
-  <%= link_to "Schedule a New Workout", new_workout_path %><br><br>
-<% end %>
+        <% @workouts.each do |workout| %>
+          <ul>
+            <li>
+              <%= link_to "#{workout.date_pretty}", workout_path(workout) %>
+              <%= link_to "Edit", edit_workout_path(workout) if current_user.is_coach? %>
+              <%= link_to "Delete", delete_workout_path(workout), method: "delete" if current_user.is_coach? %>
+            </li>
+          </ul>
+        <% end %>
 
-<% @workouts.each do |workout| %>
-  <ul>
-    <li>
-      <%= link_to "#{workout.date_pretty}", workout_path(workout) %>
-      <%= link_to "Edit", edit_workout_path(workout) if current_user.is_coach? %>
-      <%= link_to "Delete", delete_workout_path(workout), method: "delete" if current_user.is_coach? %>
-    </li>
-  </ul>
-<% end %>
+        <% @workouts.each do |workout| %>
+          <%= link_to workout_path(workout) do %>
+            <%= render partial: "app/workout_card", locals: {workout: workout} %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
 
-<h3>Coach: <%= @coach.name %></h3>
-<h3>Athletes:</h3>
-<ul>
-  <% @athletes.each do |a| %>
-    <li><%= a.name %></li>
-  <% end %>
-</ul>
+    <div class="block team-roster">
+      <h3>Coach: <%= @coach.name %></h3>
+      <h3>Athletes:</h3>
+      <ul>
+        <% @athletes.each do |a| %>
+          <li><%= a.name %></li>
+        <% end %>
+      </ul>
 
-<% if current_user.is_coach? %>
-  <%= link_to "Invite Athlete to Join", new_team_invite_path %>
-  <% if @team.team_invites.any? %>
-    <h3>Pending Invites:</h3>
-    <ul>
-      <% @team.team_invites.each do |invite| %>
-        <li><%= link_to invite.user.name, team_invite_path(invite) %></li>
+      <% if current_user.is_coach? %>
+        <%= link_to "Invite Athlete to Join", new_team_invite_path %>
+        <% if @team.team_invites.any? %>
+          <h3>Pending Invites:</h3>
+          <ul>
+            <% @team.team_invites.each do |invite| %>
+              <li><%= link_to invite.user.name, team_invite_path(invite) %></li>
+            <% end %>
+          </ul>
+        <% end %>
       <% end %>
-    </ul>
-  <% end %>
-<% end %>
+    </div>
+  </div>
+</div>
 
