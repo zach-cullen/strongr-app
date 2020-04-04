@@ -1,24 +1,16 @@
-<h1><%= @team.name %></h1>
+<h1 style="text-align: center; margin-bottom: 2rem;"><%= @team.name %></h1>
 
 <div class="team-show">
   <div class="grid">
     <div class="block team-workouts">
       <div class="inner-block">
-      <h3>Workouts</h3>
-        <% if current_user.is_coach? %>
-          <%= link_to "Schedule a New Workout", new_workout_path %><br><br>
-        <% end %>
+        <div class="block-title">
+          <h3>Workout Schedule</h3>
 
-        <% @workouts.each do |workout| %>
-          <ul>
-            <li>
-              <%= link_to "#{workout.date_pretty}", workout_path(workout) %>
-              <%= link_to "Edit", edit_workout_path(workout) if current_user.is_coach? %>
-              <%= link_to "Delete", delete_workout_path(workout), method: "delete" if current_user.is_coach? %>
-            </li>
-          </ul>
-        <% end %>
-
+          <% if current_user.is_coach? %>
+            <%= link_to "Schedule a New Workout", new_workout_path %><br><br>
+          <% end %>
+        </div>
         <% @workouts.each do |workout| %>
           <%= link_to workout_path(workout) do %>
             <%= render partial: "app/workout_card", locals: {workout: workout} %>
