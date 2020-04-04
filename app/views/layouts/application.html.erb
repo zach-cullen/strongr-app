@@ -21,7 +21,7 @@
         <% if !!current_user %>
           <%= link_to "Home", :app_home, class: "nav-link nav-home" %>
           <%= link_to "Team", team_path(current_user.team), class: "nav-link nav-team" if current_user.is_coach? %>
-          <%= link_to "Account", user_path(current_user), class: "nav-link nav-account" %>
+          <%= link_to "WOD", :wod, class: "nav-link nav-account" if current_user.has_team? %>
           <%= link_to "Log Out", :logout, method: :delete, class: "nav-link nav-log" %>
         <% else %>
           <%= link_to "Log In", :login, class: "nav-link nav-log" %>
