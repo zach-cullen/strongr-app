@@ -13,7 +13,9 @@
         <%= link_to edit_workout_path(workout) do %>
           <h6 class="button-small">Edit</h6>
         <% end %>
-        <h6 class="button-small-delete">Delete</h6>
+        <%= link_to delete_workout_path(workout), method: "delete" do %>
+          <h6 class="button-small-delete">Delete</h6>
+        <% end %>
       </div>
     <% end %>
   </div>
