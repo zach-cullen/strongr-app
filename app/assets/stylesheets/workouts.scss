@@ -21,5 +21,32 @@
   .score {
     grid-area: g2;
   }
+
+  .score-fields {
+    float: left;
+    margin: 0 1rem;
+  }
+
+  .time-field {
+    height: 1rem;
+    width: 2.5rem;
+    font-family: 'calibre';
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .btn-score {
+    width: 6rem;
+    height: 1.5rem;
+    border-radius: 5px;
+    display: block;
+    margin: 1rem auto;
+    background-color: var(--darkblue);
+    color: #fff;
+    font-family: 'calibre';
+    font-size: 1rem;
+    line-height: 1.7rem;
+    text-align: center;
+  }
   
 }

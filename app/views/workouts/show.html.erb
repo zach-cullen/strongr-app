@@ -29,28 +29,32 @@
         <div class="block-content">
           <% if @workout_metcons.any? %>
             <% @workout_metcons.each do |wm| %>
-
               <% if wm.workout_metcon_scores.first.score.blank? %>
-
-                <h3>Record Score for <%= wm.metcon.title %>:</h3>
                 <%= form_for wm do |f| %>
                   <%= f.fields_for :workout_metcon_scores do |score_fields| %>
                     <% if wm.metcon.score_by == "reps" %>
+                      <%= wm.metcon.title %>
                       <%= score_fields.label :score, "Reps: " %>
                       <%= score_fields.text_field :score %>
                     <% elsif wm.metcon.score_by == "time" %>
-                      <%= score_fields.label :min, "Min: " %>
-                      <%= score_fields.number_field :min, in: 00..59  %>
-                      <%= score_fields.label :sec, "Sec: " %>
-                      <%= score_fields.number_field :sec, in: 00..59  %>
+                      <h4 style="float: left;"><%= wm.metcon.title %></h4>
+                      <div class="score-fields">
+                        <%= score_fields.number_field :min, in: 00..59, placeholder: "min", class: "time-field"  %>
+                        <%= score_fields.label :sec, " : " %>
+                        <%= score_fields.number_field :sec, in: 00..59, placeholder: "sec", class: "time-field"  %>
+                      </div>
                     <% end %>
                   <% end %>
-                  <%= f.submit "Save Score" %>
+                  <br>
+                  <%= f.submit "Save", class: "btn-score" %>
                 <% end %>
 
               <% else %>
-                <h3><%= wm.metcon.title %></h3>
-                <p>My Score: <%= wm.workout_metcon_scores.first.score_formatted %></p>
+                <h4 style="float: left;"><%= wm.metcon.title %></h4>
+                <div class="score-fields">
+                  <%= wm.workout_metcon_scores.first.score_formatted %>
+                </div>
+                <br>
               <% end %>
 
             <% end %>
