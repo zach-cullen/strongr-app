@@ -21,45 +21,13 @@
       </div>
     </div>
 
-    <div class="block score">
+    <div class="block block-highlight score">
       <div class="inner-block">
         <div class="block-title">
           <h2>My Performance</h2>
         </div>
         <div class="block-content">
-          <% if @workout_metcons.any? %>
-            <% @workout_metcons.each do |wm| %>
-              <% if wm.workout_metcon_scores.first.score.blank? %>
-                <%= form_for wm do |f| %>
-                  <%= f.fields_for :workout_metcon_scores do |score_fields| %>
-                    <% if wm.metcon.score_by == "reps" %>
-                      <h4 style="float: left;"><%= wm.metcon.title %></h4>
-                      <div class="score-fields">
-                        <%= score_fields.text_field :score, placeholder: "# reps", class: "score-input" %>
-                      </div>
-                    <% elsif wm.metcon.score_by == "time" %>
-                      <h4 style="float: left;"><%= wm.metcon.title %></h4>
-                      <div class="score-fields">
-                        <%= score_fields.number_field :min, in: 00..59, placeholder: "min", class: "score-input"  %>
-                        <%= score_fields.label :sec, " : " %>
-                        <%= score_fields.number_field :sec, in: 00..59, placeholder: "sec", class: "score-input"  %>
-                      </div>
-                    <% end %>
-                  <% end %>
-                  <br>
-                  <%= f.submit "Save", class: "btn-score" %>
-                <% end %>
 
-              <% else %>
-                <h4 style="float: left;"><%= wm.metcon.title %></h4>
-                <div class="score-fields">
-                  <%= wm.workout_metcon_scores.first.score_formatted %>
-                </div>
-                <br>
-              <% end %>
-
-            <% end %>
-          <% end %>
         </div>
       </div>
     </div>
