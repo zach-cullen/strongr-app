@@ -10,8 +10,7 @@
           <% if @metcons.any? %>
             <% @metcons.each do |metcon| %>
               <div>
-                <p>Metcon</p>
-                <h4><%= metcon.title %></h4><br>
+                <h4><%= metcon.title %> (Metcon)</h4><br>
                 <p style="white-space: pre-line;"><%= metcon.description %></p>
                 <p>Score: <%= metcon.score_by %></p><br>
               </div>
@@ -37,6 +36,7 @@
                 <br>
               <% else %>
                 <%= form_for user_score do |f| %>
+                  <%= f.hidden_field :workout_metcon_id, value: "#{user_score.workout_metcon.id}" %>
                   <% if user_score.metcon.score_by == "reps" %>
                       <h4 style="float: left;"><%= user_score.metcon.title %></h4>
                       <div class="score-fields">
@@ -52,6 +52,7 @@
                   <% end %>
                   <br>
                   <%= f.submit "Save", class: "btn-score" %>
+                  <br>
                 <% end %>
               <% end %>
             <% end %>
