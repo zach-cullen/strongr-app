@@ -9,10 +9,10 @@ class AppController < ApplicationController
   def wod
     @team = current_user.team
     @workout = @team.workout_of_the_day
-    if @workout
+    if !!@workout
       redirect_to workout_path(@workout)
     else
-      redirect_to 'app/home'
+      redirect_to :app_home
     end
   end
 
