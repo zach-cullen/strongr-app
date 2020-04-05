@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :workouts, only: [:show, :new, :create, :edit, :update]
   resources :metcons, only: [:create, :edit, :update]
   resources :workout_metcons, only: [:update]
+  resources :workout_metcon_scores, only: [:create]
 
   get '/app/wod', to: 'app#wod', as: :wod
   get '/app/home', to: 'app#home', as: :app_home

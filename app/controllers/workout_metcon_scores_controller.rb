@@ -1,0 +1,2 @@
+class WorkoutMetconScoresController < ApplicationController
+end
