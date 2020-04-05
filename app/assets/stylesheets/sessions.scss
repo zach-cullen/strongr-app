@@ -1,3 +1,35 @@
 // Place all the styles related to the sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.login-page {
+  .grid {
+    max-width: 1050px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 1.5rem;
+    grid-template-areas:
+    ". g1 ."
+  }
+  
+  .login {
+    grid-area: g1;
+  }
+
+  .btn-score {
+    width: 6rem;
+    height: 1.5rem;
+    border-radius: 5px;
+    display: block;
+    margin: 1rem auto;
+    background-color: var(--darkblue);
+    color: #fff;
+    font-family: 'calibre';
+    font-size: 1rem;
+    line-height: 1.7rem;
+    text-align: center;
+  }
+  
+  
+}
