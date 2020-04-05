@@ -7,7 +7,6 @@ class WorkoutsController < ApplicationController
     @metcons = @workout.metcons
     @workout_metcons = @workout.workout_metcons
     @user_scores = @workout_metcons.collect {|wm| wm.find_or_build_user_score(current_user)}
-    byebug
   end 
 
   def new 
