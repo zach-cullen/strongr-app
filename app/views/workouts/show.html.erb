@@ -6,17 +6,19 @@
           <h2><%= @workout.date_pretty %></h2>
           <p>Workout of the Day</p>
         </div>
+        <div class="block-content">
           <% if @metcons.any? %>
             <% @metcons.each do |metcon| %>
               <div>
                 <p>Metcon</p>
                 <h4><%= metcon.title %></h4><br>
-                <p style="white-space: pre-line;"><%= metcon.description %></p><br>
-                <p>Score: <%= metcon.score_by %></p>
+                <p style="white-space: pre-line;"><%= metcon.description %></p>
+                <p>Score: <%= metcon.score_by %></p><br>
               </div>
             <% end %>
           <% end %>
         </div>
+      </div>
     </div>
 
     <div class="block score">
@@ -24,34 +26,36 @@
         <div class="block-title">
           <h2>My Performance</h2>
         </div>
-        <% if @workout_metcons.any? %>
-          <% @workout_metcons.each do |wm| %>
+        <div class="block-content">
+          <% if @workout_metcons.any? %>
+            <% @workout_metcons.each do |wm| %>
 
-            <% if wm.workout_metcon_scores.first.score.blank? %>
+              <% if wm.workout_metcon_scores.first.score.blank? %>
 
-              <h3>Record Score for <%= wm.metcon.title %>:</h3>
-              <%= form_for wm do |f| %>
-                <%= f.fields_for :workout_metcon_scores do |score_fields| %>
-                  <% if wm.metcon.score_by == "reps" %>
-                    <%= score_fields.label :score, "Reps: " %>
-                    <%= score_fields.text_field :score %>
-                  <% elsif wm.metcon.score_by == "time" %>
-                    <%= score_fields.label :min, "Min: " %>
-                    <%= score_fields.number_field :min, in: 00..59  %>
-                    <%= score_fields.label :sec, "Sec: " %>
-                    <%= score_fields.number_field :sec, in: 00..59  %>
+                <h3>Record Score for <%= wm.metcon.title %>:</h3>
+                <%= form_for wm do |f| %>
+                  <%= f.fields_for :workout_metcon_scores do |score_fields| %>
+                    <% if wm.metcon.score_by == "reps" %>
+                      <%= score_fields.label :score, "Reps: " %>
+                      <%= score_fields.text_field :score %>
+                    <% elsif wm.metcon.score_by == "time" %>
+                      <%= score_fields.label :min, "Min: " %>
+                      <%= score_fields.number_field :min, in: 00..59  %>
+                      <%= score_fields.label :sec, "Sec: " %>
+                      <%= score_fields.number_field :sec, in: 00..59  %>
+                    <% end %>
                   <% end %>
+                  <%= f.submit "Save Score" %>
                 <% end %>
-                <%= f.submit "Save Score" %>
+
+              <% else %>
+                <h3><%= wm.metcon.title %></h3>
+                <p>My Score: <%= wm.workout_metcon_scores.first.score_formatted %></p>
               <% end %>
 
-            <% else %>
-              <h3><%= wm.metcon.title %></h3>
-              <p>My Score: <%= wm.workout_metcon_scores.first.score_formatted %></p>
             <% end %>
-
           <% end %>
-        <% end %>
+        </div>
       </div>
     </div>
   </div>
