@@ -30,20 +30,20 @@
           <% if @user_scores.any? %>
             <% @user_scores.each do |user_score| %>
               <% if user_score.score %>
-                <h4 style="float: left;"><%= user_score.workout_metcon.title %></h4>
+                <h4 style="float: left;"><%= user_score.metcon.title %></h4>
                 <div class="score-fields">
                   <%= user_score.score_formatted %>
                 </div>
                 <br>
               <% else %>
                 <%= form_for user_score do |f| %>
-                  <% if user_score.workout_metcon.metcon.score_by == "reps" %>
-                      <h4 style="float: left;"><%= user_score.workout_metcon.metcon.title %></h4>
+                  <% if user_score.metcon.score_by == "reps" %>
+                      <h4 style="float: left;"><%= user_score.metcon.title %></h4>
                       <div class="score-fields">
                         <%= f.text_field :score, placeholder: "# reps", class: "score-input" %>
                       </div>
-                  <% elsif user_score.workout_metcon.metcon.score_by == "time" %>
-                      <h4 style="float: left;"><%= user_score.workout_metcon.metcon.title %></h4>
+                  <% elsif user_score.metcon.score_by == "time" %>
+                      <h4 style="float: left;"><%= user_score.metcon.title %></h4>
                       <div class="score-fields">
                         <%= f.number_field :min, in: 00..59, placeholder: "min", class: "score-input"  %>
                         <%= f.label :sec, " : " %>
