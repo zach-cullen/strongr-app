@@ -9,9 +9,9 @@
           <% if @metcons.any? %>
             <% @metcons.each do |metcon| %>
               <div>
-                <h5>Metcon:</h5>
-                <h3><%= metcon.title %></h3>
-                <p style="white-space: pre-line;"><%= metcon.description %></p>
+                <p>Metcon</p>
+                <h4><%= metcon.title %></h4><br>
+                <p style="white-space: pre-line;"><%= metcon.description %></p><br>
                 <p>Score: <%= metcon.score_by %></p>
               </div>
             <% end %>
