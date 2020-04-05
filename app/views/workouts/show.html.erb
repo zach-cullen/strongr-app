@@ -33,15 +33,16 @@
                 <%= form_for wm do |f| %>
                   <%= f.fields_for :workout_metcon_scores do |score_fields| %>
                     <% if wm.metcon.score_by == "reps" %>
-                      <%= wm.metcon.title %>
-                      <%= score_fields.label :score, "Reps: " %>
-                      <%= score_fields.text_field :score %>
+                      <h4 style="float: left;"><%= wm.metcon.title %></h4>
+                      <div class="score-fields">
+                        <%= score_fields.text_field :score, placeholder: "# reps", class: "score-input" %>
+                      </div>
                     <% elsif wm.metcon.score_by == "time" %>
                       <h4 style="float: left;"><%= wm.metcon.title %></h4>
                       <div class="score-fields">
-                        <%= score_fields.number_field :min, in: 00..59, placeholder: "min", class: "time-field"  %>
+                        <%= score_fields.number_field :min, in: 00..59, placeholder: "min", class: "score-input"  %>
                         <%= score_fields.label :sec, " : " %>
-                        <%= score_fields.number_field :sec, in: 00..59, placeholder: "sec", class: "time-field"  %>
+                        <%= score_fields.number_field :sec, in: 00..59, placeholder: "sec", class: "score-input"  %>
                       </div>
                     <% end %>
                   <% end %>
