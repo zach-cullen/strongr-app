@@ -14,4 +14,8 @@ class Team < ApplicationRecord
   def workout_of_the_day
     self.workouts.find_by(date: Date.today)
   end
+
+  def scheduled_workouts
+    self.workouts.scheduled
+  end
 end

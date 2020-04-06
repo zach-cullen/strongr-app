@@ -12,7 +12,7 @@ class TeamsController < ApplicationController
     if @team
       @coach = @team.users.where(is_coach: true).first
       @athletes = @team.users.where(is_coach: false)
-      @workouts = @team.workouts
+      @workouts = @team.scheduled_workouts
     else
       redirect_to user_path(current_user)
     end
