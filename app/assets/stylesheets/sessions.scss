@@ -17,5 +17,27 @@
     grid-area: g1;
   }
 
+  input {
+    height: 1.5rem;
+    width: 100%;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+  }
+
+  .btn-submit {
+    width: 100%;
+    height: 46px;
+    line-height: 46px;
+  }
+
+  .btn-google-login {
+    margin: 0 auto;
+    width: 100%;
+    height: 46px;
+    background: url('./btn_google_signin_dark_normal_web.png');
+    background-repeat: no-repeat;
+    background-position: left;
+    background-color: #4185F4;
+  }
 
 }
