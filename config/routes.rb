@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'pages#home'
   resources :users, only: [:show, :new, :create]
   resources :teams, only: [:index, :show, :new, :create] do 
-    resources :workouts, only: [:new, :create]
+    resources :workouts, only: [:new, :create, :index]
   end
     
   resources :team_invites, only: [:show, :new, :create, :destroy]
