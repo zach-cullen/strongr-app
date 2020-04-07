@@ -63,27 +63,34 @@
     </div>
 
     <div class="block scoreboard">
-    <div class="inner-block">
-      <div class="block-title">
-        <h2>Scoreboard</h2>
-      </div>
-      <div class="block-content">
+      <div class="inner-block">
         <div class="block-title">
-          <h4>Workout Title</h4>
+          <h2>Scoreboard</h2>
         </div>
-        <div class="rank-performance">
-          <div class="rank-number">
-            <h4>1</h4>
-          </div>
-          <div class="rank-name">
-            <p>First Lastname</p>
-          </div>
-          <div class="rank-score">
-            <h5>5:30</h5>
-          </div>
+        <div class="block-content">
+        
+          <% @workout_metcons.each do |wm| %>
+            <div class="block-title">
+              <br>
+              <h4><%= wm.metcon.title %></h4>
+            </div>
+            <% wm.rank_performances.each_with_index do |score, index| %>
+              <div class="rank-performance">
+                <div class="rank-number">
+                  <h4><%= index + 1 %></h4>
+                </div>
+                <div class="rank-name">
+                  <p><%= score.user.name %></p>
+                </div>
+                <div class="rank-score">
+                  <h5><%= score.score_formatted %></h5>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+          <br>
         </div>
       </div>
     </div>
-  </div>
   </div>
 </div>
