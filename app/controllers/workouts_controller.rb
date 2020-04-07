@@ -2,6 +2,15 @@ class WorkoutsController < ApplicationController
   before_action :permit_coach, only: [:new, :create, :edit, :update, :destroy]
   before_action :valid_user_workout, only: [:show, :edit, :update, :destroy]
 
+  def index 
+    @team = Team.find_by(id: params[:team_id])
+    if @team = current_user.team 
+      @workouts = @team.workouts.order(date: :desc)
+    else
+      redirect_to user_path(current_user)
+    end
+  end
+
   def show
     # @workout provided by before_action valid_user_workout validating user permission
     @metcons = @workout.metcons
