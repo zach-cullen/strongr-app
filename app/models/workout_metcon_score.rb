@@ -1,6 +1,8 @@
 class WorkoutMetconScore < ApplicationRecord
   belongs_to :workout_metcon
   belongs_to :user
+  validates :score, presence: :true
+  validates :score, numericality: { only_integer: true, greater_than: 0}
 
   def format_and_update_score(score_attributes)
     if !!score_attributes[:score]
