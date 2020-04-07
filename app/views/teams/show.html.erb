@@ -18,6 +18,10 @@
             <%= render partial: "app/workout_card", locals: {workout: workout} %>
           <% end %>
         <% end %>
+
+        <br>
+        <p style="text-align: center;"><%= link_to "All Workouts", team_workouts_path(@team) %></p>
+        <br>
       </div>
     </div>
 
