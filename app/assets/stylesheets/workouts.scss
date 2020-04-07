@@ -54,23 +54,27 @@
   }
 
   .rank-performance {
-    height: 1.5rem;
+    height: 2rem;
     border-radius: 0.5rem;
     display: grid;
-    grid-template-columns: 1fr 3fr 3fr;
-    background-color: orange;
+    grid-template-columns: 1fr 3fr 2fr;
+    background-color: var(--light-gray);
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
   }
 
   .rank-number {
-    background-color: blue;
+    color: gray;
+    margin-top: 0.5rem;
+    text-align: center;
   }
 
   .rank-name {
-    background-color: green;
+    margin-top: 0.5rem;
   }
 
   .rank-score {
-    background-color: purple;
+    text-align: center;
+    margin-top: 0.5rem;
   }
   
 }
