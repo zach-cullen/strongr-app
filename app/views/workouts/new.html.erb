@@ -1,3 +1,22 @@
 <h1>New Workout</h1>
 
-<%= render partial: "form", locals: {new_workout: @workout} %>
+<%= form_for @workout, url: team_workouts_path(@team) do |f| %>
+  <%= f.label :date, "Workout Date: " %>
+  <%= f.date_select :date, order: [:month, :day, :year] %><br>
+    <p>Add Metcon:</p>
+    <%= f.fields_for :metcons do |metcon_fields| %> 
+      <%= metcon_fields.label :title, "Title:", list: "metcons-list" %>
+        <datalist id="metcons-list">
+          <% @metcons_list.each do |m| %>
+            <option value="<%= m %>"></option>
+          <% end %>
+        </datalist><br>
+      <%= metcon_fields.text_field :title %><br><br>
+      <%= metcon_fields.label :description, "Description:" %><br>
+      <%= metcon_fields.text_area :description %><br><br>
+      <%= metcon_fields.label :score_by, "Score:" %>
+      <%= metcon_fields.select :score_by, options_for_select(Metcon.score_types) %><br>
+    <% end %>
+    <br>
+  <%= f.submit  %>
+<% end %>
