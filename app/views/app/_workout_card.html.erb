@@ -11,7 +11,7 @@
     <% if current_user.is_coach? %>
       <div class="card-coach-buttons">
         <%= link_to "Edit", edit_workout_path(workout), class: "card-btn edit-btn" %>
-        <%= link_to "Delete", delete_workout_path(workout), class: "card-btn delete-btn" %>
+        <%= link_to "Delete", delete_workout_path(workout), method: "delete", class: "card-btn delete-btn" %>
       </div>
     <% end %>
   </div>
