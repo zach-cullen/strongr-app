@@ -12,4 +12,14 @@ class WorkoutMetcon < ApplicationRecord
       self.workout_metcon_scores.build(user_id: user.id)
     end
   end
+
+  def rank_performances
+    if self.metcon.score_by == time
+      #if metcon is ranked by time, sort ascending since lower score is better
+      rankings = self.workout_metcon_scores.order(:score)
+    else 
+      #if metcon is ranked by reps, scort descending since higher score is better
+      rankings = self.workout_metcon_scores.order(score: :desc)
+    end
+  end
 end
