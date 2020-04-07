@@ -1,0 +1,6 @@
+<h1><%= @team.name %> Workouts</h1>
+
+<% @workouts.each do |workout| %>
+  <p><%= link_to" #{workout.date_pretty} - #{workout.categories}", workout_path(workout) %></p>
+  <br>
+<% end %>
