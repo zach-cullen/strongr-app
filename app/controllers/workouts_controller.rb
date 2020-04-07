@@ -10,14 +10,14 @@ class WorkoutsController < ApplicationController
   end 
 
   def new 
-    @team = current_user.team
-    @metcons_list = current_user.team.metcons_list
-    @workout = Workout.new
+    @team = Team.find_by(params[:team_id])
+    @metcons_list = @team.metcons_list
+    @workout = @team.workouts.build
     @workout.metcons.build
   end
 
   def create
-    @team = current_user.team
+    @team = Team.find_by(params[:team_id])
     #give workout team_id prior to saving since not included in params
     @workout = @team.workouts.build
     #see workout #metcons_attributes 
