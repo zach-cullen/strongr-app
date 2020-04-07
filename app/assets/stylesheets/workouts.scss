@@ -10,8 +10,8 @@
     grid-gap: 1.5rem;
     grid-template-areas:
     "g1 g2"
-    "g1 ."
-    "g3 ."
+    "g1 g3"
+    ". g3"
   }
   
   .workout {
@@ -24,6 +24,7 @@
 
   .scoreboard {
     grid-area: g3;
+    height: min-content;
   }
 
   .score-fields {
