@@ -25,6 +25,7 @@
         <div class="block-title">
           <h2>My Performance</h2>
         </div>
+
         <div class="block-content">
           <% if @user_scores.any? %>
             <% @user_scores.each do |user_score| %>
@@ -60,5 +61,26 @@
         </div>
       </div>
     </div>
+
+    <div class="block scoreboard">
+    <div class="inner-block">
+      <div class="block-title">
+        <h2>Scoreboard</h2>
+      </div>
+      <div class="block-content">
+        <div class="block-title">
+          <h4>Workout Title</h4>
+        </div>
+        <div class="rank-performance">
+          <div class="rank-number">
+          </div>
+          <div class="rank-name">
+          </div>
+          <div class="rank-score">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   </div>
 </div>

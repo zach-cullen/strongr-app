@@ -22,6 +22,10 @@
     grid-area: g2;
   }
 
+  .scoreboard {
+    grid-area: g3;
+  }
+
   .score-fields {
     float: left;
     margin: 0 1rem;
@@ -47,6 +51,26 @@
     font-size: 1rem;
     line-height: 1.7rem;
     text-align: center;
+  }
+
+  .rank-performance {
+    height: 1.5rem;
+    border-radius: 0.5rem;
+    display: grid;
+    grid-template-columns: 1fr 3fr 3fr;
+    background-color: orange;
+  }
+
+  .rank-number {
+    background-color: blue;
+  }
+
+  .rank-name {
+    background-color: green;
+  }
+
+  .rank-score {
+    background-color: purple;
   }
   
 }
