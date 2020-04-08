@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     authenticated = user.try(:authenticate, params[:password])
     if authenticated
       session[:user_id] = authenticated.id
-      redirect_to user_path(authenticated)
+      redirect_to :app_home
     else
       redirect_to :login
       flash[:alert] = "Sorry, invalid email and password combination"
