@@ -34,6 +34,7 @@ class WorkoutMetconScore < ApplicationRecord
   def score_time_format
     min = self.score / 60
     sec = self.score % 60
+    # add zero padding to seconds when less than 2 digits i.e. 0..9
     format = "#{min}:#{sec.to_s.rjust(2, "0")}"
   end
 
