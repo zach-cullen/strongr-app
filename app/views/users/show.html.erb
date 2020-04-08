@@ -3,7 +3,12 @@
 <% if @user.has_team? %>
   <h3>Team: <%= link_to "#{@user.team.name}", team_path(@user.team) %></h3>
 <% else %>
-  <p>You are not on a team yet. You can create a new team, or join a team once you have been invited. <%= link_to "Create a New Team", new_team_path %></p>
+  <p>You are not on a team yet. You can create a new team, or join a team once you have been invited.</p> 
+  <br>
+  <h4><%= link_to "Create a New Team", new_team_path %></h4>
+  <br>
+  <h2></h2>
+
 
   <h3>Invitations:</h3>
   <% if @user.team_invites.any? %>
