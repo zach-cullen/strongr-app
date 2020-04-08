@@ -19,7 +19,7 @@
       </div>
       <div class="nav-links">
         <% if !!current_user %>
-          <%= link_to "Home", :app_home, class: "nav-link nav-home" %>
+          <%= link_to "Home", :app_home, class: "nav-link nav-home" if current_user.has_team? %>
           <%= link_to "Team", team_path(current_user.team), class: "nav-link nav-team" if current_user.is_coach? %>
           <%= link_to "WOD", :wod, class: "nav-link nav-account" if current_user.has_team? %>
           <%= link_to "Log Out", :logout, method: :delete, class: "nav-link nav-log" %>
