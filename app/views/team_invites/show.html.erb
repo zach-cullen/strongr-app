@@ -1,20 +1,31 @@
-<h1>Invite</h1>
+<div class="login-page">
+  <div class="grid">
+    <div class="block login">
+      <div class="inner-block">
+        <div class="block-title">
+          <h2>Team Invite</h2>
+        </div>
+        <div class="block-content">
+          <% if current_user.team == @invite.team %>
+            <p> You have invited <%= @invite.user.name %> to join <%= @invite.team.name %></p>
+            <%= form_with url: team_invite_path(@invite), method: 'delete' do |f| %>
+              <%= f.radio_button(:expire, true) %>
+              <%= f.label(:expire, "Expire this Invitation", value: true) %><br><br>
+              <%= f.submit "Delete" %>
+            <% end %>
 
-<% if current_user.team == @invite.team %>
-  <p> You have invited <%= @invite.user.name %> to join <%= @invite.team.name %></p>
-  <%= form_with url: team_invite_path(@invite), method: 'delete' do |f| %>
-    <%= f.radio_button(:expire, true) %>
-    <%= f.label(:expire, "Expire this Invitation", value: true) %><br><br>
-    <%= f.submit "Delete" %>
-  <% end %>
-
-<% elsif current_user == @invite.user %>
-  <p> Congrats! You have been invited to join <%= @invite.team.name %></p>
-  <%= form_with url: team_invite_path(@invite), method: 'delete' do |f| %>
-    <%= f.radio_button(:accepted?, true) %>
-    <%= f.label(:accepted?, "Accept", value: true) %><br>
-    <%= f.radio_button(:accepted?, false) %>
-    <%= f.label(:accepted?, "Decline", value: false) %><br><br>
-    <%= f.submit "Submit" %>
-  <% end %>
-<% end %>
+          <% elsif current_user == @invite.user %>
+            <p> Congrats! You have been invited to join <%= @invite.team.name %></p>
+            <%= form_with url: team_invite_path(@invite), method: 'delete' do |f| %>
+              <%= f.radio_button(:accepted?, true) %>
+              <%= f.label(:accepted?, "Accept", value: true) %><br>
+              <%= f.radio_button(:accepted?, false) %>
+              <%= f.label(:accepted?, "Decline", value: false) %><br>
+              <%= f.submit "Submit", class: "btn-submit" %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
